@@ -111,9 +111,7 @@ img, canvas { display: block; max-width: 100%; }
   border-bottom: 1px solid transparent;
 }
 .nav.is-scrolled {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #ffffff;
   border-bottom-color: var(--line);
 }
 .nav__brand { display: flex; align-items: center; gap: 0.7rem; }
@@ -848,14 +846,16 @@ img, canvas { display: block; max-width: 100%; }
   display: grid;
   align-content: center;
   gap: 0.8rem;
-  opacity: 0.25;
-  transform: translateY(10px);
-  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  opacity: 1;
+  transform: none;
   border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
   padding-block: 2rem;
+  padding-left: 1.2rem;
+  transition: border-color 400ms var(--ease-out);
 }
 .journey__step:last-child { border-bottom: none; }
-.journey__step.is-active { opacity: 1; transform: none; }
+.journey__step.is-active { border-left-color: var(--amber); }
 .journey__step h3 {
   font-size: clamp(1.5rem, 2.5vw, 2.2rem);
   font-weight: 600;
