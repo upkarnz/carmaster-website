@@ -42,7 +42,7 @@
     ];
     if (details) lines.push("Details: " + details);
 
-    var mailto = "mailto:info@carmaster.co.nz" +
+    var mailto = "mailto:info@tuitorquemotors.com" +
       "?subject=" + encodeURIComponent("Booking request — " + plate) +
       "&body=" + encodeURIComponent(lines.join("\n"));
     window.location.href = mailto;
