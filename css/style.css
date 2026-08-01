@@ -215,10 +215,10 @@ img, canvas { display: block; max-width: 100%; }
     position: relative;
     inset: auto;
     z-index: 0;
-    height: 240px;
+    height: 300px;
     width: 100%;
     order: 2;
-    margin: 0.5rem 0 -1rem;
+    margin: 0.5rem 0 -0.5rem;
   }
   .hero__content { order: 1; }
   .hero__meta { order: 3; }

@@ -282,8 +282,8 @@ function layout() {
     // hero text (see the @media rule on .hero__canvas-wrap), not an
     // overlay fighting for space with it — so the car just needs to
     // sit centered and well-framed within that shorter box.
-    carGroup.position.set(0, 0.05, -1.2);
-    targetScale = 0.6;
+    carGroup.position.set(0, 0.05, -0.4);
+    targetScale = 1.35;
   }
 }
 layout();
