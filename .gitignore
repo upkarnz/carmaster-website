@@ -1,0 +1,7 @@
+.claude/
+.claude-flow/
+node_modules/
+.vercel/
+.env
+.env.local
+.DS_Store

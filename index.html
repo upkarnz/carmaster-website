@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carmaster Automotive — Trusted Car Mechanics in Auckland</title>
+  <meta name="description" content="Carmaster Automotive Limited — family-run car servicing, WOF, wheel alignment, diagnostics and repairs in Wiri, Auckland. 4.9★ rated. Book today: 09 869 7579." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=light" />
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
+</head>
+<body>
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__mark">CM</div>
+    <div class="preloader__name">Carmaster Automotive</div>
+    <div class="preloader__bar"><span></span></div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">
+      <span class="nav__logo">CM</span>
+      <span class="nav__name">Carmaster<em>Automotive</em></span>
+    </a>
+    <nav class="nav__links" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#booking">Book</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--amber nav__cta" href="tel:098697579">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.23a2 2 0 0 1 2.11-.45c.84.32 1.72.54 2.62.66A2 2 0 0 1 22 16.92z"/></svg>
+      09 869 7579
+    </a>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__canvas-wrap" aria-hidden="true">
+        <canvas id="scene"></canvas>
+        <div class="hero__fallback" id="fallback"></div>
+      </div>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <div class="hero__badge" data-fx>
+          <span class="hero__stars">★★★★★</span>
+          4.9 rated by Auckland drivers
+        </div>
+        <h1 id="hero-heading" class="hero__title">
+          <span data-split>Precision</span>
+          <span class="hero__title-accent" data-split>under the hood.</span>
+        </h1>
+        <p class="hero__sub" data-fx>
+          Family-run workshop in Wiri keeping your car safe and reliable on
+          New&nbsp;Zealand roads — servicing, WOF, alignment &amp; diagnostics,
+          all makes and models.
+        </p>
+        <div class="hero__actions" data-fx>
+          <a class="btn btn--amber btn--lg" href="#booking">Book a service</a>
+          <a class="btn btn--ghost btn--lg" href="#pricing">View pricing</a>
+        </div>
+      </div>
+
+      <div class="hero__meta" data-fx>
+        <div><strong>Est. 2020</strong><span>Family owned</span></div>
+        <div><strong>All makes</strong><span>Petrol · Diesel · Hybrid</span></div>
+        <div><strong>Wiri, Auckland</strong><span>69 Wiri Station Rd</span></div>
+      </div>
+
+      <a class="hero__scroll" href="#services" aria-label="Scroll to services">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ===== TICKER ===== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>WOF Inspections</span><i>◆</i><span>Wheel Alignment</span><i>◆</i>
+        <span>Diagnostic Scanning</span><i>◆</i><span>Brake Services</span><i>◆</i>
+        <span>Oil &amp; Filter</span><i>◆</i><span>DPF Cleaning</span><i>◆</i>
+        <span>Batteries</span><i>◆</i><span>Fleet Maintenance</span><i>◆</i>
+        <span>WOF Inspections</span><i>◆</i><span>Wheel Alignment</span><i>◆</i>
+        <span>Diagnostic Scanning</span><i>◆</i><span>Brake Services</span><i>◆</i>
+        <span>Oil &amp; Filter</span><i>◆</i><span>DPF Cleaning</span><i>◆</i>
+        <span>Batteries</span><i>◆</i><span>Fleet Maintenance</span><i>◆</i>
+      </div>
+    </div>
+
+    <!-- ===== SERVICES (bento) ===== -->
+    <section class="section" id="services" aria-labelledby="services-heading">
+      <div class="section__head">
+        <p class="eyebrow reveal">What we do</p>
+        <h2 id="services-heading" class="reveal">Every job, done properly.<br /><em>No shortcuts.</em></h2>
+      </div>
+
+      <div class="bento">
+        <article class="bento__card bento__card--wide reveal">
+          <div class="bento__num">01</div>
+          <h3>Full Car Servicing</h3>
+          <p>Basic to major services with detailed digital records for every visit. Genuine or OEM-equivalent parts, transparent quotes before we touch a spanner.</p>
+          <span class="bento__tag">From $160 +GST</span>
+        </article>
+        <article class="bento__card reveal">
+          <div class="bento__num">02</div>
+          <h3>Wheel Alignment + Nitrogen</h3>
+          <p>Laser-accurate alignment and balancing so your tyres wear even and your steering feels new.</p>
+          <span class="bento__tag">From $80 +GST</span>
+        </article>
+        <article class="bento__card reveal">
+          <div class="bento__num">03</div>
+          <h3>Diagnostic Scanning</h3>
+          <p>Dealer-grade scan tools that read the fault, not guess it — you only pay to fix what's actually broken.</p>
+          <span class="bento__tag">$60 +GST</span>
+        </article>
+        <article class="bento__card reveal">
+          <div class="bento__num">04</div>
+          <h3>Brakes &amp; Safety</h3>
+          <p>Pads, rotors, fluid and full WOF inspections. The stuff that keeps your family safe.</p>
+          <span class="bento__tag">WOF ready</span>
+        </article>
+        <article class="bento__card bento__card--wide bento__card--accent reveal">
+          <div class="bento__num">05</div>
+          <h3>Fleet Maintenance</h3>
+          <p>Running a business on wheels? We keep vans, utes and company cars on the road with scheduled servicing, priority booking and consolidated invoicing.</p>
+          <span class="bento__tag">Ask about fleet rates →</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== JOURNEY (pinned scrollytelling) ===== -->
+    <section class="journey" aria-labelledby="journey-heading">
+      <div class="journey__inner">
+        <div class="journey__sticky">
+          <p class="eyebrow">How it works</p>
+          <h2 id="journey-heading">Your service,<br /><em>step by step.</em></h2>
+          <div class="journey__dial" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none">
+              <circle class="journey__ring-track" cx="60" cy="60" r="54" />
+              <circle class="journey__ring-prog" id="journey-ring" cx="60" cy="60" r="54" />
+            </svg>
+            <span class="journey__num" id="journey-num">01</span>
+          </div>
+        </div>
+        <div class="journey__steps" id="journey-steps">
+          <article class="journey__step is-active" data-step="01">
+            <h3>Book with your rego</h3>
+            <p>Thirty seconds on your phone — plate number, the service you're after, your name and number. No account, no forms about your car.</p>
+          </article>
+          <article class="journey__step" data-step="02">
+            <h3>We inspect &amp; diagnose</h3>
+            <p>Dealer-grade scan tools and a mechanic's eye. We find what's actually wrong — and what isn't — before anything gets touched.</p>
+          </article>
+          <article class="journey__step" data-step="03">
+            <h3>You approve, we fix</h3>
+            <p>A plain-English quote before the work starts. No surprise line items, no jobs you didn't sign off. Genuine or OEM-equivalent parts.</p>
+          </article>
+          <article class="journey__step" data-step="04">
+            <h3>Back on the road</h3>
+            <p>Every job logged in your digital service record, warranty on the workmanship, and a reminder when the next service is due.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats" id="about" aria-labelledby="about-heading">
+      <div class="stats__inner">
+        <div class="stats__copy">
+          <p class="eyebrow reveal">Why Carmaster</p>
+          <h2 id="about-heading" class="reveal">A workshop that treats <em>your car like ours.</em></h2>
+          <p class="reveal">Since 2020 we've been the local, family-run alternative to the big chains — honest advice, fair pricing, and mechanics who explain the job in plain English before it starts.</p>
+        </div>
+        <div class="stats__grid">
+          <div class="stat reveal"><strong data-count="4.9">0</strong><span>Google rating</span></div>
+          <div class="stat reveal"><strong data-count="2020">0</strong><span>Established</span></div>
+          <div class="stat reveal"><strong data-count="11">0</strong><span>Core services</span></div>
+          <div class="stat reveal"><strong data-count="6">0</strong><span>Days open / week</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHOWCASE (horizontal gallery) ===== -->
+    <section class="showcase" id="gallery" aria-labelledby="gallery-heading">
+      <div class="showcase__head">
+        <div>
+          <p class="eyebrow reveal">Inside the workshop</p>
+          <h2 id="gallery-heading" class="reveal">Where the work<br /><em>gets done.</em></h2>
+        </div>
+        <span class="showcase__counter" aria-hidden="true"><b id="showcase-idx">01</b>&nbsp;/&nbsp;05</span>
+      </div>
+      <div class="showcase__viewport" id="showcase-viewport">
+        <div class="showcase__track" id="showcase-track">
+          <article class="showcase__card">
+            <span class="showcase__num">01</span>
+            <h3>Alignment bay</h3>
+            <p>Laser-guided 4-wheel alignment with nitrogen inflation on request.</p>
+          </article>
+          <article class="showcase__card showcase__card--amber">
+            <span class="showcase__num">02</span>
+            <h3>Diagnostics desk</h3>
+            <p>Dealer-grade scanners reading every module — fault found, not guessed.</p>
+          </article>
+          <article class="showcase__card">
+            <span class="showcase__num">03</span>
+            <h3>Brake &amp; safety lane</h3>
+            <p>Pads, rotors, fluid and the full WOF checklist under one hoist.</p>
+          </article>
+          <article class="showcase__card showcase__card--amber">
+            <span class="showcase__num">04</span>
+            <h3>Service bays</h3>
+            <p>Oil, filters, fluids and multi-point checks with digital records.</p>
+          </article>
+          <article class="showcase__card">
+            <span class="showcase__num">05</span>
+            <h3>Fleet lane</h3>
+            <p>Priority booking and consolidated invoicing for business fleets.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="section__head">
+        <p class="eyebrow reveal">Transparent pricing</p>
+        <h2 id="pricing-heading" class="reveal">Know the cost <em>before you book.</em></h2>
+        <p class="section__note reveal">All prices exclude GST. No surprises on the invoice.</p>
+      </div>
+
+      <div class="pricing">
+        <article class="price reveal">
+          <h3>Diagnostic Scan</h3>
+          <div class="price__amount">$60</div>
+          <ul>
+            <li>Full fault-code read</li>
+            <li>Plain-English report</li>
+            <li>Repair quote included</li>
+          </ul>
+          <a class="btn btn--ghost" href="#booking">Book scan</a>
+        </article>
+
+        <article class="price price--featured reveal">
+          <span class="price__flag">Most popular</span>
+          <h3>Basic Car Service</h3>
+          <div class="price__amount">$160</div>
+          <ul>
+            <li>Oil &amp; filter change</li>
+            <li>Multi-point safety check</li>
+            <li>Fluids topped up</li>
+            <li>Digital service record</li>
+          </ul>
+          <a class="btn btn--amber" href="#booking">Book service</a>
+        </article>
+
+        <article class="price reveal">
+          <h3>Standard Service</h3>
+          <div class="price__amount">$230</div>
+          <ul>
+            <li>Everything in Basic</li>
+            <li>Brake &amp; tyre inspection</li>
+            <li>Battery health test</li>
+          </ul>
+          <a class="btn btn--ghost" href="#booking">Book service</a>
+        </article>
+
+        <article class="price reveal">
+          <h3>Wheel Alignment</h3>
+          <div class="price__amount">$80</div>
+          <ul>
+            <li>4-wheel laser alignment</li>
+            <li>Nitrogen inflation option</li>
+            <li>Steering check</li>
+          </ul>
+          <a class="btn btn--ghost" href="#booking">Book alignment</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== BOOK BY REGO ===== -->
+    <section class="section booking" id="booking" aria-labelledby="booking-heading">
+      <div class="section__head">
+        <p class="eyebrow reveal">Book in 30 seconds</p>
+        <h2 id="booking-heading" class="reveal">Your rego is all<br /><em>we really need.</em></h2>
+        <p class="section__note reveal">Enter your number plate, pick a service, leave your contact — done. Extra details are optional.</p>
+      </div>
+
+      <div class="booking__card reveal">
+        <form class="booking__step" id="book-form">
+          <label class="booking__label" for="rego-input">Your number plate</label>
+          <div class="plate">
+            <span class="plate__flag">NZ</span>
+            <input id="rego-input" class="plate__input" type="text" maxlength="6"
+                   placeholder="ABC123" autocomplete="off" spellcheck="false" required
+                   aria-label="Vehicle registration plate" />
+          </div>
+
+          <p class="booking__label">What do you need?</p>
+          <div class="booking__services" role="radiogroup" aria-label="Service type">
+            <label class="chip"><input type="radio" name="service" value="Basic Car Service — $160 +GST" checked /><span>Basic Service · $160</span></label>
+            <label class="chip"><input type="radio" name="service" value="Standard Car Service — $230 +GST" /><span>Standard Service · $230</span></label>
+            <label class="chip"><input type="radio" name="service" value="Wheel Alignment — $80 +GST" /><span>Wheel Alignment · $80</span></label>
+            <label class="chip"><input type="radio" name="service" value="Diagnostic Scan — $60 +GST" /><span>Diagnostic Scan · $60</span></label>
+            <label class="chip"><input type="radio" name="service" value="WOF Inspection" /><span>WOF</span></label>
+            <label class="chip"><input type="radio" name="service" value="Something else" /><span>Something else</span></label>
+          </div>
+
+          <p class="booking__label">Your contact</p>
+          <div class="booking__row">
+            <input class="booking__input" id="book-name" placeholder="Your name" required autocomplete="name" />
+            <input class="booking__input" id="book-phone" placeholder="Phone" required inputmode="tel" autocomplete="tel" />
+          </div>
+
+          <label class="booking__label" for="book-details">More details <em class="booking__optional">(optional)</em></label>
+          <textarea class="booking__input booking__textarea" id="book-details" rows="3"
+                    placeholder="Anything that helps us — car make &amp; model, what's wrong, preferred day or time…"></textarea>
+
+          <button class="btn btn--amber btn--lg" type="submit">Request booking</button>
+          <p class="booking__hint">Sends your booking to the workshop — we'll confirm a time by phone or text. Or call <a href="tel:098697579"><b>09 869 7579</b></a>.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== CTA / CONTACT ===== -->
+    <section class="contact" id="contact" aria-labelledby="contact-heading">
+      <div class="contact__card reveal">
+        <div class="contact__copy">
+          <p class="eyebrow">Get booked in</p>
+          <h2 id="contact-heading">Your car's next service is <em>one call away.</em></h2>
+          <div class="contact__actions">
+            <a class="btn btn--amber btn--lg" href="tel:098697579">Call 09 869 7579</a>
+            <a class="btn btn--ghost btn--lg" href="mailto:info@carmaster.co.nz">Email us</a>
+          </div>
+        </div>
+        <address class="contact__details">
+          <div>
+            <h4>Workshop</h4>
+            <p>69 Wiri Station Road<br />Wiri, Auckland 2104</p>
+          </div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon–Fri · 9:00am – 5:00pm<br />Saturday · 8:00am – 2:00pm</p>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p><a href="tel:0224013026">022 401 3026</a><br /><a href="mailto:info@carmaster.co.nz">info@carmaster.co.nz</a></p>
+          </div>
+        </address>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Carmaster Automotive Limited · Wiri, Auckland</p>
+    <p class="footer__fine">A trusted car mechanic in Auckland — servicing all makes &amp; models since 2020.</p>
+  </footer>
+
+  <script type="module" src="js/scene.js?v=light"></script>
+  <!-- ===== CONTACT POPUP ===== -->
+  <button class="contactfab" id="contact-fab" type="button" aria-haspopup="dialog" aria-controls="contact-modal">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span>Contact</span>
+  </button>
+
+  <div class="contactmodal" id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactmodal-title" hidden>
+    <div class="contactmodal__backdrop" data-close></div>
+    <div class="contactmodal__panel" role="document">
+      <button class="contactmodal__x" type="button" data-close aria-label="Close contact options">&times;</button>
+      <p class="eyebrow">Get in touch</p>
+      <h3 id="contactmodal-title">How would you like to reach us?</h3>
+
+      <div class="contactmodal__options">
+        <a class="channel channel--wa" href="https://wa.me/64224013026" target="_blank" rel="noopener">
+          <span class="channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.9-.8-1.5-1.77-1.67-2.07-.17-.3 0-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.48-.5-.66-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2z"/></svg>
+          </span>
+          <span class="channel__text"><strong>WhatsApp</strong><small>Chat with the workshop</small></span>
+          <span class="channel__go" aria-hidden="true">→</span>
+        </a>
+
+        <a class="channel channel--call" href="tel:098697579">
+          <span class="channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M20 15.5a12.8 12.8 0 0 1-4-.6 1 1 0 0 0-1 .24l-1.7 1.7a15.1 15.1 0 0 1-6.6-6.6l1.7-1.7a1 1 0 0 0 .24-1A12.8 12.8 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z"/></svg>
+          </span>
+          <span class="channel__text"><strong>Call us</strong><small>09 869 7579</small></span>
+          <span class="channel__go" aria-hidden="true">→</span>
+        </a>
+
+        <a class="channel channel--msgr" href="https://m.me/carmaster.automotive" target="_blank" rel="noopener">
+          <span class="channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.3 2 2 6.2 2 11.7c0 2.9 1.2 5.4 3.1 7.1.2.1.3.4.3.6l.1 1.8c0 .6.6 1 1.1.7l2-.9c.2-.1.4-.1.6-.1 1 .3 2 .4 3.1.4 5.7 0 10-4.2 10-9.7S17.7 2 12 2zm6 7.6-2.9 4.7c-.5.7-1.4.9-2.1.4l-2.3-1.7a.6.6 0 0 0-.7 0l-3.1 2.4c-.4.3-1-.2-.7-.6l2.9-4.7c.5-.7 1.4-.9 2.1-.4l2.3 1.7c.2.2.5.2.7 0l3.1-2.4c.4-.3 1 .2.7.6z"/></svg>
+          </span>
+          <span class="channel__text"><strong>Messenger</strong><small>Message on Facebook</small></span>
+          <span class="channel__go" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <p class="contactmodal__foot">Or email <a href="mailto:info@carmaster.co.nz">info@carmaster.co.nz</a></p>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/booking.js" defer></script>
+  <script src="js/contact.js?v=1" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="js/motion.js?v=2" defer></script>
+</body>
+</html>
