@@ -130,6 +130,32 @@ img, canvas { display: block; max-width: 100%; }
 }
 .nav__name { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
 .nav__name em { font-style: normal; color: var(--text-dim); font-weight: 400; margin-left: 0.35em; }
+
+.nav__logo--ttm {
+  background: #0c0c0d;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+}
+.nav__name--stacked {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.nav__name--stacked strong { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text); }
+.nav__name--stacked em {
+  font-style: normal;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a7a1f;
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .nav__name--stacked em { display: none; }
+}
 .nav__links { display: flex; gap: 1.8rem; }
 .nav__links a {
   font-size: 0.9rem;
@@ -196,6 +222,12 @@ img, canvas { display: block; max-width: 100%; }
 }
 
 .hero__content { max-width: 780px; }
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
 .hero__badge {
   display: inline-flex;
   align-items: center;
@@ -206,7 +238,17 @@ img, canvas { display: block; max-width: 100%; }
   background: rgba(0, 0, 0,0.03);
   padding: 0.45rem 1rem;
   border-radius: 999px;
-  margin-bottom: 1.6rem;
+}
+.hero__tagline {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #8a6d1f;
+  background: #faf6e8;
+  border: 1px solid #e9dcae;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
 }
 .hero__stars { color: var(--amber); letter-spacing: 0.15em; font-size: 0.8rem; }
 
@@ -646,6 +688,12 @@ img, canvas { display: block; max-width: 100%; }
   font-weight: 700;
   font-size: 1.4rem;
   animation: preloaderPulse 1.2s var(--ease-out) infinite alternate;
+}
+.preloader__mark--ttm {
+  background: #0c0c0d;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  font-size: 0.95rem;
 }
 .preloader__name {
   font-family: var(--font-display);
