@@ -85,7 +85,12 @@ export default async function handler(req, res) {
     });
 
     if (!upstream.ok) {
-      return res.status(502).json({ ok: false, error: "email send failed" });
+      var upstreamBody = await upstream.text();
+      // TEMP DEBUG: surface Resend's actual rejection reason so setup
+      // issues (unverified domain, bad key, etc.) are visible instead
+      // of a generic failure. Remove the debug field once this is
+      // confirmed working end-to-end.
+      return res.status(502).json({ ok: false, error: "email send failed", debug: upstreamBody, status: upstream.status });
     }
     return res.status(200).json({ ok: true });
   } catch (err) {
