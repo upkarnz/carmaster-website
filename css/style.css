@@ -411,6 +411,49 @@ img, canvas { display: block; max-width: 100%; }
   .bento__card--wide { grid-column: span 1; }
 }
 
+/* ---------- torque values ---------- */
+.torque__tagline {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+.torque-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+.torque__card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-3);
+  padding: 1.8rem;
+  transition: transform 300ms var(--ease-out), border-color 300ms;
+}
+.torque__card:hover { transform: translateY(-4px); border-color: rgba(0, 113, 227, 0.35); }
+.torque__letter {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--amber), var(--amber-hot));
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 1.1rem;
+}
+.torque__card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.torque__card p { color: var(--text-dim); font-size: 0.92rem; }
+@media (max-width: 900px) {
+  .torque-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 620px) {
+  .torque-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- stats ---------- */
 .stats {
   background: var(--ink-2);
