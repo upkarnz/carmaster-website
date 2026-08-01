@@ -153,9 +153,6 @@ img, canvas { display: block; max-width: 100%; }
   color: #9a7a1f;
   margin: 0;
 }
-@media (max-width: 720px) {
-  .nav__name--stacked em { display: none; }
-}
 .nav__links { display: flex; gap: 1.8rem; }
 .nav__links a {
   font-size: 0.9rem;

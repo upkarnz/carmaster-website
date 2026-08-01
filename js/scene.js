@@ -278,8 +278,11 @@ function layout() {
     carGroup.position.set(0, 0.6, -1.5);
     targetScale = 0.85;
   } else {
-    carGroup.position.set(0, 1.5, -1);
-    targetScale = 0.75;
+    // Mobile: sit the car low, well below the headline text block
+    // (hero content is vertically centered, so the car needs to be
+    // pushed down and back to clear "PRECISION UNDER THE HOOD.")
+    carGroup.position.set(0, -0.9, -2.4);
+    targetScale = 0.58;
   }
 }
 layout();
