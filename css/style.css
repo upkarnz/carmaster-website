@@ -680,6 +680,13 @@ img, canvas { display: block; max-width: 100%; }
   font-size: 0.95rem;
 }
 .booking__done b { color: #7ce69a; }
+.booking__done--error {
+  border-color: rgba(226, 75, 74, 0.4);
+  background: rgba(226, 75, 74, 0.07);
+}
+.booking__done--error b { color: #e24b4a; }
+.booking__hpot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn[disabled] { opacity: 0.6; pointer-events: none; }
 
 /* ---------- contact ---------- */
 .contact { padding: var(--space-section) clamp(1rem, 4vw, 3rem); max-width: 1200px; margin-inline: auto; }

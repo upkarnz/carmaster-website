@@ -346,6 +346,8 @@
 
       <div class="booking__card reveal">
         <form class="booking__step" id="book-form">
+          <input class="booking__hpot" id="book-hpot" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
           <label class="booking__label" for="rego-input">Your number plate</label>
           <div class="plate">
             <span class="plate__flag">NZ</span>
@@ -374,8 +376,8 @@
           <textarea class="booking__input booking__textarea" id="book-details" rows="3"
                     placeholder="Anything that helps us — car make &amp; model, what's wrong, preferred day or time…"></textarea>
 
-          <button class="btn btn--amber btn--lg" type="submit">Request booking</button>
-          <p class="booking__hint">Sends your booking to the workshop — we'll confirm a time by phone or text. Or call <a href="tel:098697579"><b>09 869 7579</b></a>.</p>
+          <button class="btn btn--amber btn--lg" id="book-submit" type="submit">Request booking</button>
+          <p class="booking__hint">Sends your booking straight to the workshop — we'll confirm a time by phone or text. Or call <a href="tel:098697579"><b>09 869 7579</b></a>.</p>
         </form>
       </div>
     </section>
@@ -460,7 +462,7 @@
   </div>
 
   <script src="js/main.js" defer></script>
-  <script src="js/booking.js" defer></script>
+  <script src="js/booking.js?v=api1" defer></script>
   <script src="js/contact.js?v=1" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
