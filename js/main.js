@@ -30,7 +30,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0.01, rootMargin: "0px 0px 15% 0px" });
     revealEls.forEach(function (el, i) {
       el.style.transitionDelay = (i % 4) * 70 + "ms";
       io.observe(el);

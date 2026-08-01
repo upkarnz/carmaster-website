@@ -59,6 +59,12 @@ img, canvas { display: block; max-width: 100%; }
   transition: opacity var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
 }
 .reveal.is-in { opacity: 1; transform: none; }
+@media (max-width: 820px) {
+  /* Faster, untransformed reveal on mobile — momentum scrolling covers
+     the trigger-to-viewport distance quickly, so a slow/staggered fade
+     reads as broken (half-faded or blank) text rather than an animation. */
+  .reveal { transition-duration: 250ms; transition-delay: 0ms !important; }
+}
 
 /* ---------- buttons ---------- */
 .btn {
@@ -876,6 +882,12 @@ img, canvas { display: block; max-width: 100%; }
   justify-content: center;
   padding: var(--space-section) 0;
   overflow: hidden;
+}
+@media (max-width: 820px) {
+  /* Not pinned below this breakpoint (see motion.js matchMedia) — the
+     full-viewport min-height only makes sense while pinned, otherwise
+     it leaves a large blank gap around the shorter native-scroll gallery. */
+  .showcase { min-height: 0; display: block; }
 }
 .showcase__head {
   max-width: 1200px;
