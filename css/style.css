@@ -863,6 +863,10 @@ img, canvas { display: block; max-width: 100%; }
 
 /* ============================ SHOWCASE ============================ */
 .showcase {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: var(--space-section) 0;
   overflow: hidden;
 }

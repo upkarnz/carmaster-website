@@ -96,6 +96,19 @@
     setTimeout(function () { liftPreloader(playHero); }, 4000);
   }
 
+  // Web fonts can keep swapping in after "load" fires, reflowing headings
+  // and changing section heights — which leaves pinned sections (the
+  // horizontal showcase) with a stale, oversized scroll-spacer and a
+  // stretch of dead/blank scroll space. Re-measure once fonts settle.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+  }
+  // Final safety net in case something else reflows late (late images,
+  // slow model load affecting layout, etc.)
+  window.addEventListener("load", function () {
+    setTimeout(function () { ScrollTrigger.refresh(); }, 1200);
+  });
+
   /* ---------------- gentle parallax on section headings ---------------- */
   gsap.utils.toArray(".section__head, .stats__copy").forEach(function (el) {
     gsap.from(el, {
