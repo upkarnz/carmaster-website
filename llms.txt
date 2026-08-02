@@ -1,0 +1,16 @@
+# Tui Torque Motors (Car Master Automotive)
+> Family-run car servicing, WOF, wheel alignment, diagnostics and repairs in Wiri, Auckland. Est. 2020.
+
+## Key facts
+- Address: Unit 2, 69 Wiri Station Road, Wiri, Auckland 2104
+- Phone: 09 869 7579 (landline) / 022 095 0555 (mobile/text)
+- Hours: Mon–Fri 9am–5pm, Sat–Sun walk-ins for standard servicing, after-hours/WOF/repairs by appointment
+- Services: Full car servicing, WOF inspections, wheel alignment + nitrogen, diagnostic scanning, brakes & safety, fleet maintenance
+- Pricing: Diagnostic scan $60, Basic service $160, Standard service $230, Wheel alignment $80 (all +GST)
+
+## Main sections
+- [/#services](https://www.tuitorquemotors.com/#services): Full list of services offered
+- [/#pricing](https://www.tuitorquemotors.com/#pricing): Transparent pricing for common services
+- [/#faq](https://www.tuitorquemotors.com/#faq): Frequently asked questions about servicing, WOF, pricing and hours
+- [/#booking](https://www.tuitorquemotors.com/#booking): Book a service online
+- [/#about](https://www.tuitorquemotors.com/#about): Workshop history and values
