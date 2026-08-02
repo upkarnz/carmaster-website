@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-NZ">
 <head>
+  <script>
+    /* Must run before the browser restores scroll position on reload/
+       back-navigation. If it restores mid-page before GSAP has measured
+       the layout, ScrollTrigger's pinned showcase section computes its
+       offsets against the wrong scroll position and renders far off-
+       screen — a large blank gap where the gallery should be. Starting
+       every load at the top sidesteps the whole class of bug. */
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tui Torque Motors — Car Master Automotive | Trusted Car Mechanics in Auckland</title>
