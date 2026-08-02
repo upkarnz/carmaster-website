@@ -317,6 +317,14 @@ img, canvas { display: block; max-width: 100%; }
   justify-items: center;
   padding-top: 8px;
 }
+@media (max-width: 640px) {
+  /* .hero collapses to min-height: auto below 640px, so this cue —
+     absolutely positioned against the hero's own bottom edge — no
+     longer lands at the visible page bottom. It floats mid-page over
+     the ticker/services section instead. Not needed once the hero
+     doesn't fill the viewport anyway. */
+  .hero__scroll { display: none; }
+}
 .hero__scroll span {
   width: 3px; height: 8px;
   border-radius: 3px;
