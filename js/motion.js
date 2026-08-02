@@ -152,45 +152,27 @@
     gsap.set(ringEl, { strokeDasharray: RING_LEN, strokeDashoffset: RING_LEN });
   }
 
-  /* ---------------- pinned horizontal showcase (desktop) ---------------- */
+  /* ---------------- horizontal showcase ----------------
+     Previously scroll-jacked with a GSAP ScrollTrigger pin: the track
+     was transformed based on manually computed scroll distance. That
+     pin math broke whenever the browser restored a mid-page scroll
+     position before GSAP had measured the layout (reload, back-nav),
+     rendering the whole section thousands of pixels off-screen. A
+     plain horizontally-scrolling row can't get "off-screen" — it has
+     no computed offset to get wrong — so it replaces the pin outright
+     rather than patching the pin again. */
   var viewport = document.getElementById("showcase-viewport");
   var track = document.getElementById("showcase-track");
   var idxEl = document.getElementById("showcase-idx");
 
-  if (viewport && track) {
-    var mm = gsap.matchMedia();
-    mm.add("(min-width: 821px)", function () {
-      viewport.classList.add("is-pinned");
-      var cards = track.children.length;
-
-      var getDistance = function () {
-        return Math.max(0, track.scrollWidth - viewport.clientWidth);
-      };
-
-      var tween = gsap.to(track, {
-        x: function () { return -getDistance(); },
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".showcase",
-          start: "top top",
-          end: function () { return "+=" + (getDistance() + window.innerHeight * 0.2); },
-          pin: true,
-          scrub: 0.6,
-          invalidateOnRefresh: true,
-          onUpdate: function (self) {
-            if (!idxEl) return;
-            var i = Math.min(cards, Math.max(1, Math.round(self.progress * (cards - 1)) + 1));
-            idxEl.textContent = (i < 10 ? "0" : "") + i;
-          },
-        },
-      });
-
-      return function () {
-        viewport.classList.remove("is-pinned");
-        gsap.set(track, { x: 0 });
-        tween.scrollTrigger && tween.scrollTrigger.kill();
-        tween.kill();
-      };
-    });
+  if (viewport && track && idxEl) {
+    var cardCount = track.children.length;
+    var updateIdx = function () {
+      var distance = track.scrollWidth - viewport.clientWidth;
+      var progress = distance > 0 ? viewport.scrollLeft / distance : 0;
+      var i = Math.min(cardCount, Math.max(1, Math.round(progress * (cardCount - 1)) + 1));
+      idxEl.textContent = (i < 10 ? "0" : "") + i;
+    };
+    viewport.addEventListener("scroll", updateIdx, { passive: true });
   }
 })();
