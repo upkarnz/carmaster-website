@@ -1,8 +1,9 @@
-/* Booking endpoint — receives the website's booking form and emails
-   the workshop via Resend. Deploy as a Vercel serverless function
-   (this file at /api/book.js is picked up automatically).
+/* Booking endpoint — receives the website's booking form, emails the
+   workshop via Resend, and (if configured) notifies the workshop on
+   WhatsApp via the Meta Cloud API. Deploy as a Vercel serverless
+   function (this file at /api/book.js is picked up automatically).
 
-   Setup:
+   Email setup:
    1. Sign up at resend.com, verify tuitorquemotors.com as a sending
       domain (or use their onboarding@resend.dev test address to
       start — see FROM_EMAIL below).
@@ -10,8 +11,21 @@
       RESEND_API_KEY (Project → Settings → Environment Variables).
    3. Optionally set BOOKING_TO_EMAIL to override where bookings land
       (defaults to info@tuitorquemotors.com).
-   4. Redeploy. The form on the site already POSTs here — nothing
-      else to wire up. */
+
+   WhatsApp setup (optional — bookings still work without it):
+   1. Create a Meta Business + WhatsApp Business Platform app, verify a
+      phone number, and get a permanent access token.
+   2. Create and get approval for a message template named
+      "booking_notification" with a body like:
+        "New booking request 🔧\nPlate: {{1}}\nService: {{2}}\nName: {{3}}\nPhone: {{4}}"
+   3. Add these Vercel env vars:
+        WHATSAPP_ACCESS_TOKEN   — permanent access token
+        WHATSAPP_PHONE_NUMBER_ID — the Phone Number ID (not the number itself)
+        WORKSHOP_WHATSAPP_TO    — workshop's WhatsApp number, E.164 digits only (e.g. 64220950555)
+        WHATSAPP_TEMPLATE_NAME  — defaults to "booking_notification" if unset
+
+   Redeploy after adding env vars. The form on the site already POSTs
+   here — nothing else to wire up. */
 
 const RESEND_URL = "https://api.resend.com/emails";
 const TO_EMAIL = process.env.BOOKING_TO_EMAIL || "info@tuitorquemotors.com";
@@ -20,10 +34,57 @@ const TO_EMAIL = process.env.BOOKING_TO_EMAIL || "info@tuitorquemotors.com";
 // back to Resend's own test sender so the endpoint still works.
 const FROM_EMAIL = process.env.BOOKING_FROM_EMAIL || "Tui Torque Motors <onboarding@resend.dev>";
 
+const WHATSAPP_API_VERSION = "v21.0";
+const WHATSAPP_TEMPLATE_NAME = process.env.WHATSAPP_TEMPLATE_NAME || "booking_notification";
+
 const MAX_LEN = { plate: 8, service: 80, name: 80, phone: 30, details: 800 };
 
 function clean(value, maxLen) {
   return String(value || "").trim().slice(0, maxLen);
+}
+
+// Best-effort: WhatsApp notification failures never fail the booking
+// itself, since email is the guaranteed channel. Meta requires
+// business-initiated messages like this (not a reply within a customer's
+// 24h session) to use a pre-approved template — see setup notes above.
+async function notifyWhatsApp({ plate, service, name, phone }) {
+  const token = process.env.WHATSAPP_ACCESS_TOKEN;
+  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  const to = process.env.WORKSHOP_WHATSAPP_TO;
+  if (!token || !phoneNumberId || !to) return;
+
+  try {
+    await fetch(`https://graph.facebook.com/${WHATSAPP_API_VERSION}/${phoneNumberId}/messages`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        messaging_product: "whatsapp",
+        to,
+        type: "template",
+        template: {
+          name: WHATSAPP_TEMPLATE_NAME,
+          language: { code: "en" },
+          components: [
+            {
+              type: "body",
+              parameters: [
+                { type: "text", text: plate },
+                { type: "text", text: service || "Not specified" },
+                { type: "text", text: name },
+                { type: "text", text: phone },
+              ],
+            },
+          ],
+        },
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+  } catch (err) {
+    // Swallowed intentionally — see comment above.
+  }
 }
 
 export default async function handler(req, res) {
@@ -87,6 +148,7 @@ export default async function handler(req, res) {
     if (!upstream.ok) {
       return res.status(502).json({ ok: false, error: "email send failed" });
     }
+    await notifyWhatsApp({ plate, service, name, phone });
     return res.status(200).json({ ok: true });
   } catch (err) {
     return res.status(502).json({ ok: false, error: "email send failed" });
