@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=faq1" />
+  <link rel="stylesheet" href="css/style.css?v=vpricing1" />
   <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
@@ -448,6 +448,50 @@
             <li>Steering check</li>
           </ul>
           <a class="btn btn--ghost" href="#booking">Book alignment</a>
+        </article>
+      </div>
+
+      <!-- Pricing by vehicle type. Each .vehicle-price-card__media is a
+           6-tile mosaic (3 cols x 2 rows). Swap each
+           .vehicle-price-card__placeholder for a real <img> once photos are
+           supplied — the aria-label on each tile describes the shot it
+           expects (exterior / interior / badge), matching the reference
+           mosaic style. -->
+      <div class="vehicle-pricing">
+        <article class="vehicle-price-card reveal">
+          <div class="vehicle-price-card__media">
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — exterior, three-quarter front"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — interior / dashboard"><span>Interior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — badge close-up"><span>Badge</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — exterior, side or rear"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — on the road"><span>On the road</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="Hybrid Synergy Drive badge or dashboard detail"><span>Detail</span></div>
+          </div>
+          <div class="vehicle-price-card__body">
+            <p class="vehicle-price-card__tag">Basic cars</p>
+            <h3>Japanese hatchbacks &amp; hybrids</h3>
+            <p class="vehicle-price-card__note">Prius, Aqua and similar everyday runabouts.</p>
+            <div class="vehicle-price-card__price">From $119 <span>+GST</span></div>
+            <a class="btn btn--amber" href="#booking">Book a service</a>
+          </div>
+        </article>
+
+        <article class="vehicle-price-card reveal">
+          <div class="vehicle-price-card__media">
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, three-quarter front"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another angle"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — on the road or track"><span>On the road</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, front detail"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another model"><span>Exterior</span></div>
+            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another model"><span>Exterior</span></div>
+          </div>
+          <div class="vehicle-price-card__body">
+            <p class="vehicle-price-card__tag">Premium &amp; European</p>
+            <h3>BMW, Audi, Mercedes-Benz &amp; more</h3>
+            <p class="vehicle-price-card__note">European makes serviced to manufacturer standard.</p>
+            <div class="vehicle-price-card__price">From $203 <span>+GST</span></div>
+            <a class="btn btn--amber" href="#booking">Book a service</a>
+          </div>
         </article>
       </div>
     </section>
