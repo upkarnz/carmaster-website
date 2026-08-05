@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=vpricing1" />
+  <link rel="stylesheet" href="css/style.css?v=vpricing2" />
   <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
@@ -452,20 +452,13 @@
       </div>
 
       <!-- Pricing by vehicle type. Each .vehicle-price-card__media is a
-           6-tile mosaic (3 cols x 2 rows). Swap each
-           .vehicle-price-card__placeholder for a real <img> once photos are
-           supplied — the aria-label on each tile describes the shot it
-           expects (exterior / interior / badge), matching the reference
-           mosaic style. -->
+           3-tile collage (1 large + 2 stacked small). -->
       <div class="vehicle-pricing">
         <article class="vehicle-price-card reveal">
           <div class="vehicle-price-card__media">
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — exterior, three-quarter front"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — interior / dashboard"><span>Interior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — badge close-up"><span>Badge</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — exterior, side or rear"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Toyota Prius or Aqua — on the road"><span>On the road</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="Hybrid Synergy Drive badge or dashboard detail"><span>Detail</span></div>
+            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/basic-1-oil-change.jpg" alt="Mechanic pouring fresh oil into a Toyota engine during a service" loading="lazy" />
+            <img class="vehicle-price-card__photo" src="assets/images/basic-2-engine-detail.jpg" alt="Close-up of an engine belt and pulley during servicing" loading="lazy" />
+            <img class="vehicle-price-card__photo" src="assets/images/basic-3-diagnostics.jpg" alt="Diagnostic laptop connected to a vehicle's ECU" loading="lazy" style="object-position: 70% 55%;" />
           </div>
           <div class="vehicle-price-card__body">
             <p class="vehicle-price-card__tag">Basic cars</p>
@@ -478,12 +471,9 @@
 
         <article class="vehicle-price-card reveal">
           <div class="vehicle-price-card__media">
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, three-quarter front"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another angle"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — on the road or track"><span>On the road</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, front detail"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another model"><span>Exterior</span></div>
-            <div class="vehicle-price-card__placeholder" role="img" aria-label="European car — exterior, another model"><span>Exterior</span></div>
+            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/premium-1-audi-wheel.jpg" alt="Audi alloy wheel with red brake caliper" loading="lazy" />
+            <img class="vehicle-price-card__photo" src="assets/images/premium-2-headlight.jpg" alt="European car headlight and exterior detail" loading="lazy" />
+            <img class="vehicle-price-card__photo" src="assets/images/premium-3-ferrari-wheel.jpg" alt="Ferrari alloy wheel with yellow Brembo brake caliper" loading="lazy" />
           </div>
           <div class="vehicle-price-card__body">
             <p class="vehicle-price-card__tag">Premium &amp; European</p>
