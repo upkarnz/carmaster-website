@@ -39,7 +39,7 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.1;
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0xffffff, 0.03); // fade to white page
+scene.fog = new THREE.FogExp2(0x0a0a0d, 0.035); // fade to dark page
 
 // Metals & carpaint need reflections — generated studio env, no HDR download
 const pmrem = new THREE.PMREMGenerator(renderer);
@@ -49,23 +49,23 @@ const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
 camera.position.set(0, 1.4, 11);
 
 /* ---------------- lighting ---------------- */
-scene.add(new THREE.AmbientLight(0xdfe3e8, 0.95)); // bright ambient for light scene
+scene.add(new THREE.AmbientLight(0x2a2a30, 0.55)); // dim ambient for dark showroom
 
-const key = new THREE.DirectionalLight(0xffffff, 1.4);
+const key = new THREE.DirectionalLight(0xffffff, 1.6);
 key.position.set(5, 8, 6);
 scene.add(key);
 
-const amberRim = new THREE.PointLight(0x2997ff, 55, 40); // Apple-blue rim light
+const amberRim = new THREE.PointLight(0xe2233a, 65, 40); // red showroom rim light
 amberRim.position.set(-6, 3, -5);
 scene.add(amberRim);
 
-const coolFill = new THREE.PointLight(0x3a6ea8, 18, 30);
+const coolFill = new THREE.PointLight(0x8a1a26, 20, 30);
 coolFill.position.set(6, -2, 4);
 scene.add(coolFill);
 
 /* ---------------- materials (brand showroom spec) ---------------- */
 const bodyMaterial = new THREE.MeshPhysicalMaterial({
-  color: 0xd0d4d8,            // Apple metallic silver carpaint
+  color: 0x2a2c30,            // dark metallic carpaint
   metalness: 0.9,
   roughness: 0.4,
   clearcoat: 1.0,
@@ -83,12 +83,12 @@ const glassMaterial = new THREE.MeshPhysicalMaterial({
 const carGroup = new THREE.Group();
 scene.add(carGroup);
 
-// Amber showroom ring under the car
+// Red showroom ring under the car
 const ring = new THREE.Mesh(
   new THREE.TorusGeometry(3.1, 0.025, 12, 96),
   new THREE.MeshStandardMaterial({
-    color: 0x2997ff,
-    emissive: 0x0071e3,
+    color: 0xe2233a,
+    emissive: 0xe2233a,
     emissiveIntensity: 1.6,
     roughness: 0.4,
   })
@@ -252,7 +252,7 @@ particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 const particles = new THREE.Points(
   particleGeo,
   new THREE.PointsMaterial({
-    color: 0x2997ff,
+    color: 0xe2233a,
     size: 0.04,
     transparent: true,
     opacity: 0.5,
