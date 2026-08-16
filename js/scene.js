@@ -86,6 +86,15 @@ const headlightMaterial = new THREE.MeshStandardMaterial({
   emissiveIntensity: 0.25,
   roughness: 0.3,
 });
+// Headlight lens — clear, not the dark window tint, or the flare
+// underneath never reads through it.
+const headlightLensMaterial = new THREE.MeshPhysicalMaterial({
+  color: 0xf5f8ff,
+  metalness: 0,
+  roughness: 0.08,
+  transparent: true,
+  opacity: 0.25,
+});
 
 /* ---------------- car group + podium ---------------- */
 const carGroup = new THREE.Group();
@@ -181,8 +190,11 @@ PARTS.forEach(function (name) {
     if (name === "body") {
       part.traverse(function (o) { if (o.isMesh) o.material = bodyMaterial; });
     }
-    if (name === "window" || name === "headlightglasses") {
+    if (name === "window") {
       part.traverse(function (o) { if (o.isMesh) o.material = glassMaterial; });
+    }
+    if (name === "headlightglasses") {
+      part.traverse(function (o) { if (o.isMesh) o.material = headlightLensMaterial; });
     }
     if (name === "headlights") {
       part.traverse(function (o) { if (o.isMesh) o.material = headlightMaterial; });
@@ -323,7 +335,7 @@ new IntersectionObserver(([entry]) => {
 }, { threshold: 0 }).observe(canvas.parentElement);
 
 const BASE_YAW = 2.55; // 3/4 front view
-const HEADLIGHT_FLARE_WINDOW = 0.35; // rad either side of front-facing pose
+const HEADLIGHT_FLARE_WINDOW = 0.5; // rad either side of front-facing pose
 
 function tick() {
   requestAnimationFrame(tick);
@@ -350,7 +362,7 @@ function tick() {
     const cyclePos = ((carGroup.rotation.y - BASE_YAW) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
     const distToFront = Math.min(cyclePos, Math.PI * 2 - cyclePos);
     const flare = Math.max(0, 1 - distToFront / HEADLIGHT_FLARE_WINDOW);
-    headlightMaterial.emissiveIntensity = 0.25 + flare * flare * 3.2;
+    headlightMaterial.emissiveIntensity = 0.25 + flare * flare * 5;
 
     particles.rotation.y = t * 0.015;
 
