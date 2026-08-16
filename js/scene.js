@@ -78,23 +78,6 @@ const glassMaterial = new THREE.MeshPhysicalMaterial({
   transparent: true,
   opacity: 0.92,
 });
-// Headlight bulbs — dim by default, flared bright once per turntable
-// rotation as the car swings back through its front-facing pose.
-const headlightMaterial = new THREE.MeshStandardMaterial({
-  color: 0xfff2d9,
-  emissive: 0xfff2d9,
-  emissiveIntensity: 0.25,
-  roughness: 0.3,
-});
-// Headlight lens — clear, not the dark window tint, or the flare
-// underneath never reads through it.
-const headlightLensMaterial = new THREE.MeshPhysicalMaterial({
-  color: 0xf5f8ff,
-  metalness: 0,
-  roughness: 0.08,
-  transparent: true,
-  opacity: 0.25,
-});
 
 /* ---------------- car group + podium ---------------- */
 const carGroup = new THREE.Group();
@@ -190,14 +173,8 @@ PARTS.forEach(function (name) {
     if (name === "body") {
       part.traverse(function (o) { if (o.isMesh) o.material = bodyMaterial; });
     }
-    if (name === "window") {
+    if (name === "window" || name === "headlightglasses") {
       part.traverse(function (o) { if (o.isMesh) o.material = glassMaterial; });
-    }
-    if (name === "headlightglasses") {
-      part.traverse(function (o) { if (o.isMesh) o.material = headlightLensMaterial; });
-    }
-    if (name === "headlights") {
-      part.traverse(function (o) { if (o.isMesh) o.material = headlightMaterial; });
     }
     if (name === "numberplate") {
       // The model plate spells "JJA434" in 3D letter geometry, so we
@@ -335,7 +312,6 @@ new IntersectionObserver(([entry]) => {
 }, { threshold: 0 }).observe(canvas.parentElement);
 
 const BASE_YAW = 2.55; // 3/4 front view
-const HEADLIGHT_FLARE_WINDOW = 0.5; // rad either side of front-facing pose
 
 function tick() {
   requestAnimationFrame(tick);
@@ -356,13 +332,6 @@ function tick() {
 
     // Showroom ring pulse
     ring.material.emissiveIntensity = 1.4 + Math.sin(t * 1.6) * 0.5;
-
-    // Headlight flare: brightens once per turntable rotation, right as
-    // the car swings back through its front-facing pose.
-    const cyclePos = ((carGroup.rotation.y - BASE_YAW) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
-    const distToFront = Math.min(cyclePos, Math.PI * 2 - cyclePos);
-    const flare = Math.max(0, 1 - distToFront / HEADLIGHT_FLARE_WINDOW);
-    headlightMaterial.emissiveIntensity = 0.25 + flare * flare * 5;
 
     particles.rotation.y = t * 0.015;
 
