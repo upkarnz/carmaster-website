@@ -78,6 +78,29 @@ const glassMaterial = new THREE.MeshPhysicalMaterial({
   transparent: true,
   opacity: 0.92,
 });
+// Headlight bulbs — off (near-black) by default, snap to a crisp cool
+// white as the car swings through its front-facing pose, off again as
+// it turns away. The bulb geometry sits recessed inside the body shell
+// with no proper cutout, so the opaque body panel occludes it from
+// outside — depthTest is disabled so the glow reads through convincingly
+// once lit, the same cheap trick low-poly car models rely on for this.
+const headlightMaterial = new THREE.MeshStandardMaterial({
+  color: 0x0a0a0c,
+  emissive: 0xdfeeff,
+  emissiveIntensity: 0.02,
+  roughness: 0.25,
+  depthTest: false,
+  depthWrite: false,
+});
+// Headlight lens — clear, not the dark window tint, or the light
+// underneath never reads through it.
+const headlightLensMaterial = new THREE.MeshPhysicalMaterial({
+  color: 0xf5f8ff,
+  metalness: 0,
+  roughness: 0.06,
+  transparent: true,
+  opacity: 0.18,
+});
 
 /* ---------------- car group + podium ---------------- */
 const carGroup = new THREE.Group();
@@ -173,8 +196,19 @@ PARTS.forEach(function (name) {
     if (name === "body") {
       part.traverse(function (o) { if (o.isMesh) o.material = bodyMaterial; });
     }
-    if (name === "window" || name === "headlightglasses") {
+    if (name === "window") {
       part.traverse(function (o) { if (o.isMesh) o.material = glassMaterial; });
+    }
+    if (name === "headlightglasses") {
+      part.traverse(function (o) { if (o.isMesh) o.material = headlightLensMaterial; });
+    }
+    if (name === "headlights") {
+      part.traverse(function (o) {
+        if (o.isMesh) {
+          o.material = headlightMaterial;
+          o.renderOrder = 10;
+        }
+      });
     }
     if (name === "numberplate") {
       // The model plate spells "JJA434" in 3D letter geometry, so we
@@ -311,7 +345,14 @@ new IntersectionObserver(([entry]) => {
   heroVisible = entry.isIntersecting;
 }, { threshold: 0 }).observe(canvas.parentElement);
 
-const BASE_YAW = 2.55; // 3/4 front view
+const BASE_YAW = 2.55; // starting turntable pose (this angle faces the REAR toward camera)
+const FRONT_YAW = BASE_YAW + Math.PI; // the angle that faces the car's front (headlights) toward camera
+const HEADLIGHT_ON_WINDOW = 0.3; // rad either side of front-facing pose
+
+function smoothstep(edge0, edge1, x) {
+  const v = Math.min(1, Math.max(0, (x - edge0) / (edge1 - edge0)));
+  return v * v * (3 - 2 * v);
+}
 
 function tick() {
   requestAnimationFrame(tick);
@@ -332,6 +373,12 @@ function tick() {
 
     // Showroom ring pulse
     ring.material.emissiveIntensity = 1.4 + Math.sin(t * 1.6) * 0.5;
+
+    // Headlights: on while the car is facing front, off as it rotates away
+    const cyclePos = ((carGroup.rotation.y - FRONT_YAW) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
+    const distToFront = Math.min(cyclePos, Math.PI * 2 - cyclePos);
+    const lit = smoothstep(HEADLIGHT_ON_WINDOW, HEADLIGHT_ON_WINDOW * 0.55, distToFront);
+    headlightMaterial.emissiveIntensity = 0.02 + lit * 2.6;
 
     particles.rotation.y = t * 0.015;
 
