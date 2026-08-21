@@ -539,6 +539,47 @@ img, canvas { display: block; max-width: 100%; }
   .torque-grid { grid-template-columns: 1fr; }
 }
 
+/* ---------- qualifications & accreditation ---------- */
+.qual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+.qual-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-3);
+  padding: 1.8rem;
+  transition: transform 300ms var(--ease-out), border-color 300ms;
+}
+.qual-card:hover { transform: translateY(-4px); border-color: rgba(226, 35, 58, 0.4); }
+.qual-card__badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  height: 44px;
+  padding-inline: 0.6rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--amber), var(--amber-hot));
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
+}
+.qual-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.qual-card p { color: var(--text-dim); font-size: 0.92rem; }
+.qual-card--pending {
+  background: transparent;
+  border-style: dashed;
+}
+.qual-card--pending .qual-card__badge {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+}
+@media (max-width: 620px) { .qual-grid { grid-template-columns: 1fr; } }
+
 /* ---------- stats ---------- */
 .stats {
   background: var(--ink-2);
