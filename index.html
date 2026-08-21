@@ -16,7 +16,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="apple-touch-icon" href="assets/favicon.png" />
-  <meta name="description" content="Tui Torque Motors Ltd, trading as Car Master Automotive — family-run car servicing, WOF, wheel alignment, diagnostics and repairs in Wiri, Auckland. One stop, all under one roof. 4.9★ rated. Book today: 09 869 7579." />
+  <meta name="description" content="Tui Torque Motors Ltd, trading as Car Master Automotive — family-run car servicing, WOF, wheel alignment, diagnostics and repairs in Wiri, Auckland. One stop, all under one roof. 4.8★ Google rated (52 reviews). Book today: 09 869 7579." />
   <link rel="canonical" href="https://www.tuitorquemotors.com/" />
 
   <!-- Open Graph / social preview. og:image intentionally omitted until a
@@ -39,16 +39,15 @@
   <link rel="preconnect" href="https://unpkg.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=seofix1" />
+  <link rel="stylesheet" href="css/style.css?v=gbp1" />
   <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
 
-  <!-- aggregateRating intentionally omitted: the 4.9★ figure shown in the
-       hero isn't yet backed by a verifiable, linkable public review count
-       (e.g. a live Google Business Profile). Add it here once one exists —
-       an unverifiable rating in structured data is worse than none if it's
-       ever checked against reality. -->
+  <!-- aggregateRating backed by the verified, business-owner-managed
+       Google Business Profile for "Tui Torque Motors Ltd" — 4.8/5 from
+       52 Google reviews, confirmed 21 Aug 2026. Update ratingValue/
+       reviewCount here if it's checked again later and has moved. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,6 +57,13 @@
     "url": "https://www.tuitorquemotors.com/",
     "telephone": "+64-9-869-7579",
     "email": "info@tuitorquemotors.com",
+    "sameAs": ["https://maps.google.com/maps?cid=801847800252603543"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "52",
+      "bestRating": "5"
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Unit 2, 69 Wiri Station Road",
@@ -194,10 +200,10 @@
 
       <div class="hero__content">
         <div class="hero__badges" data-fx>
-          <span class="hero__badge">
+          <a class="hero__badge" href="https://maps.google.com/maps?cid=801847800252603543" target="_blank" rel="noopener">
             <span class="hero__stars">★★★★★</span>
-            4.9 rated by Auckland drivers
-          </span>
+            4.8 on Google · 52 reviews
+          </a>
           <span class="hero__tagline">One stop, all under one roof</span>
         </div>
         <h1 id="hero-heading" class="hero__title">
@@ -383,7 +389,7 @@
           <p class="reveal">Since 2020 we've been the local, family-run alternative to the big chains — honest advice, fair pricing, and mechanics who explain the job in plain English before it starts.</p>
         </div>
         <div class="stats__grid">
-          <div class="stat reveal"><strong data-count="4.9">0</strong><span>Google rating</span></div>
+          <div class="stat reveal"><strong data-count="4.8">0</strong><span>Google rating</span></div>
           <div class="stat reveal"><strong data-count="2020">0</strong><span>Established</span></div>
           <div class="stat reveal"><strong data-count="8">0</strong><span>Core services</span></div>
           <div class="stat reveal"><strong data-count="6">0</strong><span>Days open / week</span></div>
@@ -671,6 +677,7 @@
           <div>
             <h4>Workshop</h4>
             <p>Unit 2, 69 Wiri Station Road<br />Wiri, Auckland 2104</p>
+            <p><a href="https://maps.google.com/maps?cid=801847800252603543" target="_blank" rel="noopener">Get directions →</a></p>
           </div>
           <div>
             <h4>Hours</h4>
@@ -679,8 +686,17 @@
           <div>
             <h4>Contact</h4>
             <p><a href="tel:0220950555">022 095 0555</a><br /><a href="mailto:info@tuitorquemotors.com">info@tuitorquemotors.com</a></p>
+            <p><a href="https://maps.google.com/maps?cid=801847800252603543" target="_blank" rel="noopener">Read our Google reviews →</a></p>
           </div>
         </address>
+      </div>
+      <div class="contact__map reveal">
+        <iframe
+          src="https://maps.google.com/maps?cid=801847800252603543&output=embed"
+          title="Tui Torque Motors on Google Maps — Unit 2, 69 Wiri Station Road, Wiri, Auckland"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </section>
   </main>
