@@ -11,6 +11,14 @@ import { DRACOLoader } from "https://unpkg.com/three@0.160.0/examples/jsm/loader
 import { MeshoptDecoder } from "https://unpkg.com/three@0.160.0/examples/jsm/libs/meshopt_decoder.module.js";
 import { RoomEnvironment } from "https://unpkg.com/three@0.160.0/examples/jsm/environments/RoomEnvironment.js";
 
+// Building the renderer, PMREM environment and loading the 15-part GLB
+// model is genuine CPU work — enough to compete with the main thread
+// right as a first-time visitor is most likely to tap "Book a service".
+// Deferring the start of all of it to browser idle time (after the
+// initial paint and any immediate first interaction) keeps that tap
+// responsive without changing anything about the scene itself.
+function initScene() {
+
 const canvas = document.getElementById("scene");
 const fallback = document.getElementById("fallback");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -404,4 +412,12 @@ manager.onLoad = () => {
 
 if (!prefersReducedMotion) {
   tick();
+}
+
+} // end initScene
+
+if ("requestIdleCallback" in window) {
+  requestIdleCallback(initScene, { timeout: 1500 });
+} else {
+  setTimeout(initScene, 150);
 }

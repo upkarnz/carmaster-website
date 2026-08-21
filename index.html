@@ -12,7 +12,10 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tui Torque Motors — Car Master Automotive | Trusted Car Mechanics in Auckland</title>
+  <title>Tui Torque Motors — Car Servicing in Wiri, Auckland</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
   <meta name="description" content="Tui Torque Motors Ltd, trading as Car Master Automotive — family-run car servicing, WOF, wheel alignment, diagnostics and repairs in Wiri, Auckland. One stop, all under one roof. 4.9★ rated. Book today: 09 869 7579." />
   <link rel="canonical" href="https://www.tuitorquemotors.com/" />
 
@@ -32,8 +35,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=performance1" />
+  <link rel="stylesheet" href="css/style.css?v=seofix1" />
   <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
@@ -66,6 +72,13 @@
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
         "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "17:00",
+        "description": "Walk-ins for standard servicing"
       }
     ],
     "priceRange": "$60-$230",
@@ -73,7 +86,13 @@
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostic Scan" }, "price": "60", "priceCurrency": "NZD" },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Basic Car Service" }, "price": "160", "priceCurrency": "NZD" },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Standard Service" }, "price": "230", "priceCurrency": "NZD" },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wheel Alignment" }, "price": "80", "priceCurrency": "NZD" }
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wheel Alignment" }, "price": "80", "priceCurrency": "NZD" },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WOF Inspection" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brakes & Safety" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fleet Maintenance" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ECU Tuning & Diagnostics" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suspension Lift & Lowering Kits" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Exhaust Solutions" } }
     ]
   }
   </script>
@@ -145,7 +164,7 @@
         <em>Car Master Automotive</em>
       </span>
     </a>
-    <nav class="nav__links" aria-label="Main navigation">
+    <nav class="nav__links" id="nav-links" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#performance">Performance</a>
       <a href="#pricing">Pricing</a>
@@ -158,6 +177,9 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.78.66 2.62a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.46-1.23a2 2 0 0 1 2.11-.45c.84.32 1.72.54 2.62.66A2 2 0 0 1 22 16.92z"/></svg>
       09 869 7579
     </a>
+    <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
   <main id="top">
@@ -269,10 +291,11 @@
 
       <div class="performance-grid">
         <article class="performance-card reveal">
-          <img class="performance-card__photo" src="assets/images/basic-3-diagnostics.jpg" alt="Diagnostic laptop connected to a vehicle's ECU during a tuning session" loading="lazy" style="object-position: 70% 55%;" />
+          <img class="performance-card__photo" src="assets/images/basic-3-diagnostics.jpg" alt="Diagnostic laptop connected to a vehicle's ECU during a tuning session" loading="lazy" width="1200" height="800" style="object-position: 70% 55%;" />
           <div class="performance-card__body">
             <p class="performance-card__tag">ECU &amp; emissions</p>
             <h3>ECU Tuning &amp; Diagnostics</h3>
+            <p class="performance-card__note">Dealer-grade tools to read, tune and clear the systems that trip a check-engine light or fail an emissions check — from AdBlue/SCR faults to a blocked DPF.</p>
             <ul class="performance-card__list">
               <li>ECU performance tuning &amp; remapping</li>
               <li>AdBlue solution &amp; SCR diagnostics</li>
@@ -284,10 +307,11 @@
         </article>
 
         <article class="performance-card reveal">
-          <img class="performance-card__photo" src="assets/images/performance-1-suspension-kits.jpg" alt="Suspension lift kit and lowering kit components laid out in the workshop" loading="lazy" />
+          <img class="performance-card__photo" src="assets/images/performance-1-suspension-kits.jpg" alt="Suspension lift kit and lowering kit components laid out in the workshop" loading="lazy" width="1100" height="600" />
           <div class="performance-card__body">
             <p class="performance-card__tag">Suspension</p>
             <h3>Lift &amp; Lowering Kits</h3>
+            <p class="performance-card__note">Kits fitted and aligned in-house, not sent out — from heavy-duty 3"–6" lift kits for trucks and 4x4s to coilover lowering kits for a lower, sharper stance.</p>
             <ul class="performance-card__list">
               <li>Heavy-duty lift kits for trucks &amp; 4x4s</li>
               <li>Performance lowering kits &amp; coilovers</li>
@@ -298,10 +322,11 @@
         </article>
 
         <article class="performance-card reveal">
-          <img class="performance-card__photo" src="assets/images/performance-2-exhaust-solutions.jpg" alt="Custom high-performance exhaust systems and pipework in the workshop" loading="lazy" />
+          <img class="performance-card__photo" src="assets/images/performance-2-exhaust-solutions.jpg" alt="Custom high-performance exhaust systems and pipework in the workshop" loading="lazy" width="1100" height="600" />
           <div class="performance-card__body">
             <p class="performance-card__tag">Exhaust</p>
             <h3>Custom Exhaust Solutions</h3>
+            <p class="performance-card__note">Mandrel-bent stainless systems built to fit your car and your ears — quieter daily-driver setups through to full performance cat-back systems.</p>
             <ul class="performance-card__list">
               <li>Custom high-performance exhaust systems</li>
               <li>Improved flow, tone &amp; efficiency</li>
@@ -354,13 +379,13 @@
         <div class="stats__copy">
           <p class="eyebrow reveal">Why Tui Torque Motors</p>
           <h2 id="about-heading" class="reveal">A workshop that treats <em>your car like ours.</em></h2>
-          <p class="reveal">Tui Torque Motors (trading as Car Master Automotive) is a family-run car servicing workshop in Wiri, Auckland, established in 2020. The workshop services all makes and models — petrol, diesel, and hybrid — offering full car servicing, WOF inspections, wheel alignment with nitrogen inflation, dealer-grade diagnostic scanning, brake and safety work, and fleet maintenance for local businesses. Pricing starts at $60 +GST for a diagnostic scan, $160 +GST for a basic service, $230 +GST for a standard service, and $80 +GST for a four-wheel laser alignment. The workshop is located at Unit 2, 69 Wiri Station Road, Wiri, Auckland 2104, and is open Monday–Friday 9am–5pm, with weekend walk-ins for standard servicing and after-hours appointments available for WOF and repairs. Every job includes a digital service record and a plain-English quote before any work begins.</p>
+          <p class="reveal">Tui Torque Motors (trading as Car Master Automotive) is a family-run car servicing workshop in Wiri, Auckland, established in 2020. The workshop services all makes and models — petrol, diesel, and hybrid — offering full car servicing, WOF inspections, wheel alignment with nitrogen inflation, dealer-grade diagnostic scanning, brake and safety work, ECU tuning and emissions diagnostics, suspension lift/lowering kits, custom exhaust work, and fleet maintenance for local businesses. Pricing starts at $60 +GST for a diagnostic scan, $160 +GST for a basic service, $230 +GST for a standard service, and $80 +GST for a four-wheel laser alignment. The workshop is located at Unit 2, 69 Wiri Station Road, Wiri, Auckland 2104 — a short drive from Manukau, Papatoetoe, Manurewa, Māngere and Ōtāhuhu — and is open Monday–Friday 9am–5pm, with weekend walk-ins for standard servicing and after-hours appointments available for WOF and repairs. Every job includes a digital service record and a plain-English quote before any work begins.</p>
           <p class="reveal">Since 2020 we've been the local, family-run alternative to the big chains — honest advice, fair pricing, and mechanics who explain the job in plain English before it starts.</p>
         </div>
         <div class="stats__grid">
           <div class="stat reveal"><strong data-count="4.9">0</strong><span>Google rating</span></div>
           <div class="stat reveal"><strong data-count="2020">0</strong><span>Established</span></div>
-          <div class="stat reveal"><strong data-count="11">0</strong><span>Core services</span></div>
+          <div class="stat reveal"><strong data-count="8">0</strong><span>Core services</span></div>
           <div class="stat reveal"><strong data-count="6">0</strong><span>Days open / week</span></div>
         </div>
       </div>
@@ -511,9 +536,9 @@
       <div class="vehicle-pricing">
         <article class="vehicle-price-card reveal">
           <div class="vehicle-price-card__media">
-            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/basic-1-oil-change.jpg" alt="Mechanic pouring fresh oil into a Toyota engine during a service" loading="lazy" />
-            <img class="vehicle-price-card__photo" src="assets/images/basic-2-engine-detail.jpg" alt="Close-up of an engine belt and pulley during servicing" loading="lazy" />
-            <img class="vehicle-price-card__photo" src="assets/images/basic-3-diagnostics.jpg" alt="Diagnostic laptop connected to a vehicle's ECU" loading="lazy" style="object-position: 70% 55%;" />
+            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/basic-1-oil-change.jpg" alt="Mechanic pouring fresh oil into a Toyota engine during a service" loading="lazy" width="1200" height="800" />
+            <img class="vehicle-price-card__photo" src="assets/images/basic-2-engine-detail.jpg" alt="Close-up of an engine belt and pulley during servicing" loading="lazy" width="1200" height="675" />
+            <img class="vehicle-price-card__photo" src="assets/images/basic-3-diagnostics.jpg" alt="Diagnostic laptop connected to a vehicle's ECU" loading="lazy" width="1200" height="800" style="object-position: 70% 55%;" />
           </div>
           <div class="vehicle-price-card__body">
             <p class="vehicle-price-card__tag">Basic cars</p>
@@ -526,9 +551,9 @@
 
         <article class="vehicle-price-card reveal">
           <div class="vehicle-price-card__media">
-            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/premium-1-audi-wheel.jpg" alt="Audi alloy wheel with red brake caliper" loading="lazy" />
-            <img class="vehicle-price-card__photo" src="assets/images/premium-2-headlight.jpg" alt="European car headlight and exterior detail" loading="lazy" />
-            <img class="vehicle-price-card__photo" src="assets/images/premium-3-mercedes-detail.jpg" alt="Mercedes-Benz serviced in our Wiri workshop" loading="lazy" />
+            <img class="vehicle-price-card__photo vehicle-price-card__photo--main" src="assets/images/premium-1-audi-wheel.jpg" alt="Audi alloy wheel with red brake caliper" loading="lazy" width="1200" height="800" />
+            <img class="vehicle-price-card__photo" src="assets/images/premium-2-headlight.jpg" alt="European car headlight and exterior detail" loading="lazy" width="853" height="1200" />
+            <img class="vehicle-price-card__photo" src="assets/images/premium-3-mercedes-detail.jpg" alt="Mercedes-Benz serviced in our Wiri workshop" loading="lazy" width="1200" height="1200" />
           </div>
           <div class="vehicle-price-card__body">
             <p class="vehicle-price-card__tag">Premium &amp; European</p>
@@ -665,7 +690,7 @@
     <p class="footer__fine">Car Master Automotive is a trading name of Tui Torque Motors Ltd — servicing all makes &amp; models since 2020.</p>
   </footer>
 
-  <script type="module" src="js/scene.js?v=headlighton8"></script>
+  <script type="module" src="js/scene.js?v=idledefer1"></script>
   <!-- ===== CONTACT POPUP ===== -->
   <button class="contactfab" id="contact-fab" type="button" aria-haspopup="dialog" aria-controls="contact-modal">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -709,11 +734,11 @@
     </div>
   </div>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=mobilenav1" defer></script>
   <script src="js/booking.js?v=api1" defer></script>
   <script src="js/contact.js?v=1" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
-  <script src="js/motion.js?v=nopin1" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+  <script src="js/motion.js?v=preloadfix1" defer></script>
 </body>
 </html>

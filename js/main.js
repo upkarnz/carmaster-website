@@ -18,6 +18,34 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---- mobile nav toggle ---- */
+  var navToggle = document.getElementById("nav-toggle");
+  var navLinks = document.getElementById("nav-links");
+  if (navToggle && navLinks) {
+    function closeMenu() {
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open menu");
+      navLinks.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
+    function openMenu() {
+      navToggle.setAttribute("aria-expanded", "true");
+      navToggle.setAttribute("aria-label", "Close menu");
+      navLinks.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    }
+    navToggle.addEventListener("click", function () {
+      if (navToggle.getAttribute("aria-expanded") === "true") closeMenu();
+      else openMenu();
+    });
+    navLinks.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", closeMenu);
+    });
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeMenu();
+    });
+  }
+
   /* ---- reveal on scroll ---- */
   var revealEls = document.querySelectorAll(".reveal");
   if (prefersReducedMotion || !("IntersectionObserver" in window)) {

@@ -179,10 +179,60 @@ img, canvas { display: block; max-width: 100%; }
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { transform: scaleX(1); }
 
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav__toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-inline: auto;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
+}
+.nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 720px) {
-  .nav__links { display: none; }
   .nav__name em { display: none; }
   .nav__cta { padding: 0.6rem 1.1rem; font-size: 0.85rem; }
+  .nav__toggle { display: flex; }
+
+  .nav__links {
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+    padding: 6rem 2rem 3rem;
+    background: rgba(10, 10, 13, 0.98);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out), visibility 260ms;
+  }
+  .nav__links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .nav__links a { font-size: 1.3rem; }
 }
 
 /* ============================ HERO ============================ */
@@ -228,6 +278,17 @@ img, canvas { display: block; max-width: 100%; }
   }
   .hero__content { order: 1; }
   .hero__meta { order: 3; }
+}
+
+/* Narrow phones (iPhone SE and similar ~375px and under): the booking
+   CTA needs to land inside the first viewport without scrolling, so
+   vertical rhythm gets tighter than the general mobile breakpoint. */
+@media (max-width: 400px) {
+  .hero { padding-top: 5.5rem; }
+  .hero__title { font-size: clamp(2.2rem, 8vw, 2.8rem); }
+  .hero__badges { margin-bottom: 1rem; }
+  .hero__sub { margin-top: 1rem; font-size: 1rem; }
+  .hero__actions { margin-top: 1.4rem; }
 }
 
 .hero__grid {
@@ -657,7 +718,8 @@ img, canvas { display: block; max-width: 100%; }
   color: var(--amber);
   margin-bottom: 0.4rem;
 }
-.performance-card__body h3 { font-size: 1.25rem; margin-bottom: 0.9rem; }
+.performance-card__body h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+.performance-card__note { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
 .performance-card__list { display: grid; gap: 0.5rem; margin-bottom: 1.4rem; flex: 1; }
 .performance-card__list li {
   font-size: 0.9rem;

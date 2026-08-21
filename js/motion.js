@@ -15,7 +15,14 @@
   var preloader = document.getElementById("preloader");
 
   /* ---------------- preloader ---------------- */
-  var MIN_SHOW = 900; // ms — long enough to read, short enough to not annoy
+  // Only the first load in a session pays the full delay — repeat visits
+  // (any nav within the same tab/session) skip straight past it, since a
+  // returning visitor already knows what the site is.
+  var seenBefore = (function () {
+    try { return sessionStorage.getItem("ttm-seen") === "1"; } catch (e) { return false; }
+  })();
+  try { sessionStorage.setItem("ttm-seen", "1"); } catch (e) {}
+  var MIN_SHOW = seenBefore ? 0 : 500; // ms — long enough to read, short enough to not annoy
   var shownAt = performance.now();
 
   function liftPreloader(cb) {
