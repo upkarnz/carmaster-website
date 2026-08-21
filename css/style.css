@@ -580,6 +580,36 @@ img, canvas { display: block; max-width: 100%; }
 }
 @media (max-width: 620px) { .qual-grid { grid-template-columns: 1fr; } }
 
+/* ---------- testimonials ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+.testimonial-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-3);
+  padding: 1.8rem;
+  margin: 0;
+}
+.testimonial-card__stars {
+  display: block;
+  color: var(--amber);
+  letter-spacing: 0.15em;
+  font-size: 1rem;
+  margin-bottom: 0.9rem;
+}
+.testimonial-card p { font-size: 1rem; line-height: 1.6; margin-bottom: 1.1rem; }
+.testimonial-card cite {
+  font-style: normal;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.testimonial-card cite span { font-weight: 400; color: var(--text-dim); font-family: var(--font-body); }
+@media (max-width: 700px) { .testimonial-grid { grid-template-columns: 1fr; } }
+
 /* ---------- stats ---------- */
 .stats {
   background: var(--ink-2);
