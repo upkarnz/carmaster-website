@@ -427,6 +427,8 @@ img, canvas { display: block; max-width: 100%; }
 .section { padding: var(--space-section) clamp(1rem, 4vw, 3rem); max-width: 1200px; margin-inline: auto; }
 .section__head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); max-width: 700px; }
 .section__note { color: var(--text-dim); margin-top: 1rem; }
+.section__note a { color: var(--amber); font-weight: 600; }
+.section__note a:hover { color: var(--amber-hot); }
 
 /* ---------- bento ---------- */
 .bento {
@@ -477,6 +479,14 @@ img, canvas { display: block; max-width: 100%; }
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
 }
+.bento__link {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+.bento__link:hover { color: var(--amber); }
 @media (max-width: 900px) {
   .bento { grid-template-columns: 1fr 1fr; }
   .bento__card--wide { grid-column: span 2; }
@@ -735,6 +745,7 @@ img, canvas { display: block; max-width: 100%; }
   font-weight: 700;
 }
 .performance-card .btn { align-self: flex-start; }
+.performance-card__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 @media (max-width: 900px) { .performance-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .performance-grid { grid-template-columns: 1fr; } }
 
@@ -1292,6 +1303,92 @@ img, canvas { display: block; max-width: 100%; }
 .channel:hover .channel__go { transform: translateX(3px); color: var(--amber); }
 .contactmodal__foot { margin-top: 1.3rem; text-align: center; font-size: 0.85rem; color: var(--text-dim); }
 .contactmodal__foot a { color: var(--amber); }
+
+/* ============================ SERVICE PAGES ============================ */
+/* Lightweight hero for /services/*.html — no WebGL scene, no GSAP. These
+   pages exist to be fast, indexable, single-topic landing pages, not a
+   second showroom. */
+.page-hero {
+  position: relative;
+  padding: clamp(7rem, 14vh, 10rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 6vh, 5rem);
+  isolation: isolate;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(65% 65% at 20% 30%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(65% 65% at 20% 30%, black 20%, transparent 100%);
+  opacity: 0.5;
+}
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(55% 60% at 15% 20%, rgba(226, 35, 58, 0.22), transparent 70%);
+}
+.page-hero__title {
+  font-size: clamp(2.2rem, 1.2rem + 3.5vw, 3.6rem);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.page-hero__sub { margin-top: 1.4rem; max-width: 620px; color: var(--text-dim); font-size: 1.1rem; }
+.page-hero .hero__actions { margin-top: 2rem; }
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+}
+.breadcrumb a { color: var(--text-dim); }
+.breadcrumb a:hover { color: var(--amber); }
+.breadcrumb span { opacity: 0.6; }
+.breadcrumb [aria-current] { color: var(--text); }
+
+.check-list { display: grid; gap: 0.7rem; max-width: 620px; }
+.check-list li {
+  font-size: 0.98rem;
+  color: var(--text-dim);
+  padding-left: 1.6rem;
+  position: relative;
+}
+.check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--amber);
+  font-weight: 700;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+.related-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-2);
+  padding: 1.4rem 1.6rem;
+  transition: transform 300ms var(--ease-out), border-color 300ms;
+}
+.related-card:hover { transform: translateY(-4px); border-color: rgba(226, 35, 58, 0.4); }
+.related-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.related-card p { color: var(--text-dim); font-size: 0.88rem; }
+@media (max-width: 900px) { .related-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .related-grid { grid-template-columns: 1fr; } }
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
