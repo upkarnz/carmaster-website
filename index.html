@@ -39,7 +39,7 @@
   <link rel="preconnect" href="https://unpkg.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=usability6" />
+  <link rel="stylesheet" href="css/style.css?v=usability7" />
   <script type="importmap">
     { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
   </script>
@@ -440,7 +440,7 @@
     <!-- ===== TORQUE VALUES (ownership transition) ===== -->
     <section class="section torque" id="values" aria-labelledby="torque-heading">
       <div class="section__head">
-        <p class="eyebrow reveal">Under new ownership</p>
+        <p class="eyebrow reveal">New ownership</p>
         <h2 id="torque-heading" class="reveal">Same workshop, same team.<br /><em>A new standard.</em></h2>
         <p class="section__note reveal">This workshop has looked after Wiri drivers since 2020 — and it still does. What's changed is who's behind it: new ownership, the same mechanics you already trust, and a sharper focus on how you're treated from the moment you call. We didn't inherit your trust. We're earning it, one job at a time.</p>
       </div>
@@ -620,6 +620,7 @@
 
       <!-- Pricing by vehicle type. Each .vehicle-price-card__media is a
            3-tile collage (1 large + 2 stacked small). -->
+      <p class="pricing__divider">Prefer to price by your car instead? Typical cost by vehicle type:</p>
       <div class="vehicle-pricing">
         <article class="vehicle-price-card reveal">
           <div class="vehicle-price-card__media">
@@ -632,7 +633,7 @@
             <h3>Japanese hatchbacks &amp; hybrids</h3>
             <p class="vehicle-price-card__note">Prius, Aqua and similar everyday runabouts.</p>
             <div class="vehicle-price-card__price">From $119 <span>+GST</span></div>
-            <a class="btn btn--amber" href="#booking">Book a service</a>
+            <a class="btn btn--ghost" href="#booking">Book a service</a>
           </div>
         </article>
 
@@ -647,7 +648,7 @@
             <h3>BMW, Audi, Mercedes-Benz &amp; more</h3>
             <p class="vehicle-price-card__note">European makes serviced to manufacturer standard.</p>
             <div class="vehicle-price-card__price">From $230 <span>+GST</span></div>
-            <a class="btn btn--amber" href="#booking">Book a service</a>
+            <a class="btn btn--ghost" href="#booking">Book a service</a>
           </div>
         </article>
       </div>
@@ -728,8 +729,8 @@
 
           <p class="booking__label">Your contact</p>
           <div class="booking__row">
-            <input class="booking__input" id="book-name" placeholder="Your name" required autocomplete="name" />
-            <input class="booking__input" id="book-phone" placeholder="Phone" required inputmode="tel" autocomplete="tel" />
+            <input class="booking__input" id="book-name" placeholder="Your name" aria-label="Your name" required autocomplete="name" />
+            <input class="booking__input" id="book-phone" placeholder="Phone" aria-label="Phone number" required inputmode="tel" autocomplete="tel" />
           </div>
 
           <label class="booking__label" for="book-details">More details <em class="booking__optional">(optional)</em></label>
