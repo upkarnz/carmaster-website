@@ -841,7 +841,8 @@ img, canvas { display: block; max-width: 100%; }
   font-weight: 700;
 }
 .performance-card .btn { align-self: flex-start; }
-.performance-card__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.performance-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.performance-card__actions .bento__link { display: inline-flex; margin-top: 0; }
 @media (max-width: 900px) { .performance-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .performance-grid { grid-template-columns: 1fr; } }
 
