@@ -24,13 +24,32 @@
 const GRAPH_VERSION = "v21.0";
 const VERIFY_TOKEN = process.env.CHATBOT_VERIFY_TOKEN;
 
-const FALLBACK_REPLY =
+// Rotated so a customer sending several unmatched messages in a row doesn't
+// get the exact same reply every time.
+const FALLBACK_REPLIES = [
   "Thanks for messaging Tui Torque Motors! For anything specific, call or text " +
-  "022 095 0555 / 09 869 7579, or book online at tuitorquemotors.com/#booking. " +
-  "We're open Mon–Fri 9am–5pm, with weekend walk-ins for standard servicing.";
+    "022 095 0555 / 09 869 7579, or book online at tuitorquemotors.com/#booking. " +
+    "We're open Mon–Fri 9am–5pm, with weekend walk-ins for standard servicing.",
+  "Not quite sure I've got that one — try asking about pricing, WOF, hours, or " +
+    "booking, or call/text 022 095 0555 and we'll sort it out directly.",
+  "You can always reach the workshop directly on 022 095 0555 (call or text) " +
+    "if it's easier — otherwise ask me about servicing, pricing, WOF or hours.",
+];
+
+const GREETING_REPLY =
+  "Hi, thanks for reaching out to Tui Torque Motors! Ask me about servicing, " +
+  "WOF, pricing, wheel alignment, hours or booking — or call/text 022 095 0555 " +
+  "to talk to the workshop directly.";
 
 // Ordered: first matching rule wins, so put more specific keywords first.
+// "hi"/"hey" need word-boundary matching (wholeWord) — as plain substrings
+// they'd false-positive on "which", "this", "they", etc.
 const FAQ_RULES = [
+  {
+    keywords: ["hi", "hello", "hey", "kia ora", "good morning", "good afternoon"],
+    wholeWord: true,
+    reply: GREETING_REPLY,
+  },
   {
     keywords: ["wof", "warrant of fitness"],
     reply:
@@ -86,10 +105,16 @@ const FAQ_RULES = [
   },
 ];
 
+function keywordMatches(lower, keyword, wholeWord) {
+  if (!wholeWord) return lower.includes(keyword);
+  return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(lower);
+}
+
 function matchReply(text) {
   const lower = String(text || "").toLowerCase();
-  const rule = FAQ_RULES.find((r) => r.keywords.some((kw) => lower.includes(kw)));
-  return rule ? rule.reply : FALLBACK_REPLY;
+  const rule = FAQ_RULES.find((r) => r.keywords.some((kw) => keywordMatches(lower, kw, r.wholeWord)));
+  if (rule) return rule.reply;
+  return FALLBACK_REPLIES[Math.floor(Math.random() * FALLBACK_REPLIES.length)];
 }
 
 async function sendMessengerText(recipientId, text) {
