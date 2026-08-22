@@ -452,7 +452,7 @@ img, canvas { display: block; max-width: 100%; }
 /* ============================ SECTIONS ============================ */
 .section { padding: var(--space-section) clamp(1rem, 4vw, 3rem); max-width: 1200px; margin-inline: auto; }
 .section__head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); max-width: 700px; }
-.section__note { color: var(--text-dim); margin-top: 1rem; }
+.section__note { color: var(--text-dim); margin-top: 1.5rem; }
 .section__note a { color: var(--amber); font-weight: 600; }
 .section__note a:hover { color: var(--amber-hot); }
 
