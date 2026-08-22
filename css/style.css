@@ -1285,11 +1285,13 @@ img, canvas { display: block; max-width: 100%; }
   position: absolute;
   top: 0.6rem;
   right: 1.4rem;
+  line-height: 1;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(4.5rem, 9vw, 7rem);
+  font-size: clamp(3.75rem, 7vw, 6rem);
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(226, 35, 58, 0.4);
+  pointer-events: none;
 }
 .showcase__card h3 { font-size: var(--text-2xl); }
 .showcase__card p { color: var(--text-dim); font-size: var(--text-sm); max-width: 40ch; }
