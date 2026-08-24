@@ -117,9 +117,41 @@ function matchReply(text) {
   return FALLBACK_REPLIES[Math.floor(Math.random() * FALLBACK_REPLIES.length)];
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// A reply that lands in under a second reads as an obvious bot. This fakes
+// a human reading + typing out the reply: a short "reading" pause, a
+// typing indicator, then a further pause scaled to the reply's length
+// (roughly a fast typist's pace), capped so we stay well inside Vercel's
+// function timeout even for a multi-message webhook batch.
+function typingDelayMs(text) {
+  const READING_PAUSE_MS = 700;
+  const MS_PER_CHAR = 28;
+  const MAX_MS = 4000;
+  return Math.min(READING_PAUSE_MS + String(text || "").length * MS_PER_CHAR, MAX_MS);
+}
+
+async function setMessengerTyping(recipientId, on) {
+  const token = process.env.PAGE_ACCESS_TOKEN;
+  if (!token) return;
+  await fetch(`https://graph.facebook.com/${GRAPH_VERSION}/me/messages?access_token=${encodeURIComponent(token)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      recipient: { id: recipientId },
+      sender_action: on ? "typing_on" : "typing_off",
+    }),
+    signal: AbortSignal.timeout(8000),
+  }).catch(() => {});
+}
+
 async function sendMessengerText(recipientId, text) {
   const token = process.env.PAGE_ACCESS_TOKEN;
   if (!token) return;
+  await setMessengerTyping(recipientId, true);
+  await sleep(typingDelayMs(text));
   await fetch(`https://graph.facebook.com/${GRAPH_VERSION}/me/messages?access_token=${encodeURIComponent(token)}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -132,10 +164,32 @@ async function sendMessengerText(recipientId, text) {
   });
 }
 
-async function sendWhatsAppText(to, text) {
+async function markWhatsAppReadAndTyping(messageId) {
+  const token = process.env.WHATSAPP_ACCESS_TOKEN;
+  const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
+  if (!token || !phoneNumberId || !messageId) return;
+  await fetch(`https://graph.facebook.com/${GRAPH_VERSION}/${phoneNumberId}/messages`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      status: "read",
+      message_id: messageId,
+      typing_indicator: { type: "text" },
+    }),
+    signal: AbortSignal.timeout(8000),
+  }).catch(() => {});
+}
+
+async function sendWhatsAppText(to, text, messageId) {
   const token = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
   if (!token || !phoneNumberId) return;
+  await markWhatsAppReadAndTyping(messageId);
+  await sleep(typingDelayMs(text));
   await fetch(`https://graph.facebook.com/${GRAPH_VERSION}/${phoneNumberId}/messages`, {
     method: "POST",
     headers: {
@@ -175,7 +229,7 @@ async function handleWhatsAppEvent(body) {
         const text = message.type === "text" ? message.text.body : null;
         const from = message.from;
         if (!text || !from) continue;
-        await sendWhatsAppText(from, matchReply(text));
+        await sendWhatsAppText(from, matchReply(text), message.id);
       }
     }
   }
