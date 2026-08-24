@@ -37,9 +37,8 @@ const FALLBACK_REPLIES = [
 ];
 
 const GREETING_REPLY =
-  "Hi, thanks for reaching out to Tui Torque Motors! Ask me about servicing, " +
-  "WOF, pricing, wheel alignment, hours or booking — or call/text 022 095 0555 " +
-  "to talk to the workshop directly.";
+  "Hey, thanks for reaching out to Tui Torque Motors! How can I help — " +
+  "servicing, WOF, pricing, wheel alignment, or booking a time?";
 
 // Ordered: first matching rule wins, so put more specific keywords first.
 // "hi"/"hey" need word-boundary matching (wholeWord) — as plain substrings
