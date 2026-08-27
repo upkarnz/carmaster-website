@@ -33,7 +33,7 @@ let renderer;
 try {
   renderer = new THREE.WebGLRenderer({
     canvas,
-    antialias: !isMobile,
+    antialias: true,
     alpha: true,
     powerPreference: "high-performance",
   });
