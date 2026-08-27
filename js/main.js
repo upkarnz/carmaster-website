@@ -95,6 +95,26 @@
     stats.forEach(function (el) { statIO.observe(el); });
   }
 
+  /* ---- FAQ see more / see less ---- */
+  var faqToggle = document.getElementById("faq-toggle");
+  var faqList = document.getElementById("faq-list");
+  if (faqToggle && faqList) {
+    faqToggle.addEventListener("click", function () {
+      var expanded = faqToggle.getAttribute("aria-expanded") === "true";
+      var label = faqToggle.querySelector(".faq-toggle__label");
+      if (expanded) {
+        faqList.classList.remove("is-expanded");
+        faqToggle.setAttribute("aria-expanded", "false");
+        label.textContent = "See more questions";
+        faqToggle.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "center" });
+      } else {
+        faqList.classList.add("is-expanded");
+        faqToggle.setAttribute("aria-expanded", "true");
+        label.textContent = "See less";
+      }
+    });
+  }
+
   /* ---- bento cursor glow ---- */
   document.querySelectorAll(".bento__card").forEach(function (card) {
     card.addEventListener("pointermove", function (e) {

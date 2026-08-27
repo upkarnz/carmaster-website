@@ -886,6 +886,28 @@ img, canvas { display: block; max-width: 100%; }
 }
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-item p { color: var(--text-dim); padding: 0 0 1.2rem; max-width: 65ch; }
+.faq-item--extra { display: none; }
+.faq-list.is-expanded .faq-item--extra { display: block; }
+.faq-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.faq-toggle:hover { color: var(--amber); }
+.faq-toggle::after {
+  content: "\2193";
+  transition: transform 200ms var(--ease-out);
+}
+.faq-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
 
 /* ---------- booking (rego lookup) ---------- */
 .booking__card {
