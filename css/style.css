@@ -531,6 +531,7 @@ img, canvas { display: block; max-width: 100%; }
 }
 .marques__photo {
   width: 100%;
+  height: auto;
   max-height: 320px;
   aspect-ratio: 3 / 4;
   object-fit: cover;
@@ -857,6 +858,7 @@ img, canvas { display: block; max-width: 100%; }
 .performance-card:hover { transform: translateY(-4px); border-color: rgba(226, 35, 58, 0.4); }
 .performance-card__photo {
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 10;
   object-fit: cover;
 }
@@ -890,7 +892,17 @@ img, canvas { display: block; max-width: 100%; }
 .performance-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
 .performance-card__actions .bento__link { display: inline-flex; margin-top: 0; }
 @media (max-width: 900px) { .performance-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .performance-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) {
+  .performance-grid { grid-template-columns: 1fr; gap: 1rem; }
+  /* Cards stack full-width here — a tall 16/10 photo plus a full body
+     (heading, note, 3-4 bullets, two buttons) makes 3 of them add up
+     to a lot of scroll. Shrink the photo and tighten spacing instead
+     of cutting any of the content. */
+  .performance-card__photo { aspect-ratio: 21 / 9; }
+  .performance-card__body { padding: 1.2rem 1.4rem 1.4rem; }
+  .performance-card__note { margin-bottom: 0.7rem; }
+  .performance-card__list { gap: 0.35rem; margin-bottom: 1rem; }
+}
 
 /* ---------- faq ---------- */
 .faq-list {
