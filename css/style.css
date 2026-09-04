@@ -522,6 +522,27 @@ img, canvas { display: block; max-width: 100%; }
   .bento__card--wide { grid-column: span 1; }
 }
 
+/* ---------- european marques ---------- */
+.marque-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  list-style: none;
+  margin-top: 0.5rem;
+}
+.marque-list li {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-md);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1.4rem;
+  background: var(--ink-2);
+  transition: border-color 200ms, color 200ms;
+}
+.marque-list li:hover { border-color: var(--amber); color: var(--amber); }
+
 /* ---------- torque values ---------- */
 .torque__tagline {
   font-family: var(--font-display);
