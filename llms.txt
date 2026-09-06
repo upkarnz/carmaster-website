@@ -28,3 +28,7 @@
 - [/services/ecu-tuning.html](https://www.tuitorquemotors.com/services/ecu-tuning.html): ECU tuning, AdBlue/SCR, DPF and emissions diagnostics
 - [/services/suspension-kits.html](https://www.tuitorquemotors.com/services/suspension-kits.html): Suspension lift and lowering kits
 - [/services/exhaust-solutions.html](https://www.tuitorquemotors.com/services/exhaust-solutions.html): Custom exhaust fabrication and fitting
+
+## Blog
+- [/blog/](https://www.tuitorquemotors.com/blog/): Car care advice, servicing costs and WOF tips
+- [/blog/european-car-servicing-auckland.html](https://www.tuitorquemotors.com/blog/european-car-servicing-auckland.html): European car servicing costs and common fault patterns for BMW, Mercedes-Benz, Audi and Volkswagen
