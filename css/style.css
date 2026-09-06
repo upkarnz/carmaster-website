@@ -714,7 +714,7 @@ img, canvas { display: block; max-width: 100%; }
 /* ---------- pricing ---------- */
 .pricing {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 1.1rem;
   align-items: stretch;
 }
@@ -771,7 +771,6 @@ img, canvas { display: block; max-width: 100%; }
   padding: 0.3rem 0.8rem;
   border-radius: var(--radius-pill);
 }
-@media (max-width: 1000px) { .pricing { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .pricing { grid-template-columns: 1fr; } }
 
 /* ---------- vehicle-type pricing (photo mosaic cards) ---------- */
