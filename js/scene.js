@@ -316,12 +316,16 @@ function layout() {
   if (w > 1024) {
     carGroup.position.set(2.7, -1.45, 0.5);
     targetScale = 1.12;
+  } else if (w > 640) {
+    // Tablet (incl. iPad): same stacked-below-text layout as mobile,
+    // but the box is taller (see .hero__canvas-wrap @media rule) so
+    // the car can scale up to fill it instead of looking phone-sized.
+    carGroup.position.set(0, 0.05, -0.4);
+    targetScale = 1.9;
   } else {
-    // Mobile & tablet (incl. iPad): the canvas is its own fixed-height
-    // block below the hero text (see the @media rule on
-    // .hero__canvas-wrap), not an overlay fighting for space with it —
-    // so the car just needs to sit centered and well-framed within
-    // that shorter box.
+    // Mobile: the canvas is its own fixed-height block below the hero
+    // text, not an overlay fighting for space with it — so the car
+    // just needs to sit centered and well-framed within that box.
     carGroup.position.set(0, 0.05, -0.4);
     targetScale = 1.35;
   }

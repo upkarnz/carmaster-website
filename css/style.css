@@ -295,6 +295,12 @@ img, canvas { display: block; max-width: 100%; }
   .hero__meta { order: 3; }
 }
 
+/* Tablet (incl. iPad): more width than a phone to fill, so give the
+   car a taller box to grow into rather than staying phone-sized. */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero__canvas-wrap { height: 420px; }
+}
+
 /* Narrow phones (iPhone SE and similar ~375px and under): the booking
    CTA needs to land inside the first viewport without scrolling, so
    vertical rhythm gets tighter than the general mobile breakpoint. */
