@@ -1441,7 +1441,13 @@ img, canvas { display: block; max-width: 100%; }
   display: grid;
   place-items: center;
   padding: 1.2rem;
+  /* Belt-and-suspenders: only the .is-open state should ever be able to
+     intercept clicks/scroll. If the close animation's fallback in
+     contact.js is ever bypassed, this still prevents the invisible
+     closed modal from blocking the page underneath it. */
+  pointer-events: none;
 }
+.contactmodal.is-open { pointer-events: auto; }
 .contactmodal[hidden] { display: none; }
 .contactmodal__backdrop {
   position: absolute;

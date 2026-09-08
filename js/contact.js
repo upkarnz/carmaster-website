@@ -27,11 +27,19 @@
     modal.classList.remove("is-open");
     document.body.style.overflow = "";
     document.removeEventListener("keydown", onKey);
-    var done = function () {
+    // Some browsers (notably Safari with "Reduce Motion" on, which forces
+    // near-zero transition durations site-wide) never fire transitionend
+    // for a sub-millisecond transition — leaving this fixed, full-screen
+    // overlay in the DOM and blocking all scroll/taps on the page behind
+    // it. A timeout fallback guarantees it always gets hidden.
+    var hideOnce = function () {
+      if (modal.hidden) return;
       modal.hidden = true;
-      modal.removeEventListener("transitionend", done);
+      modal.removeEventListener("transitionend", hideOnce);
+      clearTimeout(fallback);
     };
-    modal.addEventListener("transitionend", done);
+    var fallback = setTimeout(hideOnce, 320);
+    modal.addEventListener("transitionend", hideOnce);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
 
