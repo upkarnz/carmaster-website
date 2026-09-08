@@ -275,11 +275,12 @@ img, canvas { display: block; max-width: 100%; }
 }
 .hero__fallback.is-active { display: block; }
 
-/* Mobile: the hero text block is tall enough that no fixed 3D
-   y-offset avoids overlapping it, so instead the car becomes a
-   normal-flow block that renders after the text — guaranteed clear
-   of it regardless of how many lines the copy wraps to. */
-@media (max-width: 640px) {
+/* Mobile & tablet (incl. iPad): the hero text block is tall enough
+   that no fixed 3D y-offset avoids overlapping it, so instead the
+   car becomes a normal-flow block that renders after the text —
+   guaranteed clear of it regardless of how many lines the copy
+   wraps to. */
+@media (max-width: 1024px) {
   .hero { min-height: auto; }
   .hero__canvas-wrap {
     position: relative;

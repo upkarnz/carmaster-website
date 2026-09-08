@@ -313,17 +313,15 @@ function layout() {
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
 
-  if (w > 980) {
+  if (w > 1024) {
     carGroup.position.set(2.7, -1.45, 0.5);
     targetScale = 1.12;
-  } else if (w > 640) {
-    carGroup.position.set(0, 0.6, -1.5);
-    targetScale = 0.85;
   } else {
-    // Mobile: the canvas is now its own fixed-height block below the
-    // hero text (see the @media rule on .hero__canvas-wrap), not an
-    // overlay fighting for space with it — so the car just needs to
-    // sit centered and well-framed within that shorter box.
+    // Mobile & tablet (incl. iPad): the canvas is its own fixed-height
+    // block below the hero text (see the @media rule on
+    // .hero__canvas-wrap), not an overlay fighting for space with it —
+    // so the car just needs to sit centered and well-framed within
+    // that shorter box.
     carGroup.position.set(0, 0.05, -0.4);
     targetScale = 1.35;
   }
