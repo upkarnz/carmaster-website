@@ -19,7 +19,40 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css?v=usability8" />
+  <link rel="stylesheet" href="/css/style.css?v=usability8" id="main-css" />
+  <script>
+    /* Self-heal an unstyled page: some visitors have hit the CSS
+       request failing silently (a bad CDN/proxy response with the
+       wrong content-type, which X-Content-Type-Options: nosniff then
+       refuses to apply — no error event, just an unstyled page).
+       Retry the stylesheet fetch with a fresh cache-busted URL if it
+       errors outright, or if the page still isn't styled shortly
+       after load. */
+    (function () {
+      var link = document.getElementById("main-css");
+      var retried = false;
+      function retry() {
+        if (retried) return;
+        retried = true;
+        var href = link.getAttribute("href").split("&retry=")[0];
+        var fresh = document.createElement("link");
+        fresh.rel = "stylesheet";
+        fresh.href = href + "&retry=" + Date.now();
+        fresh.onerror = function () { location.reload(); };
+        document.head.appendChild(fresh);
+      }
+      link.onerror = retry;
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var bg = getComputedStyle(document.body).backgroundColor;
+          if (bg === "rgba(0, 0, 0, 0)" || bg === "transparent" || bg === "rgb(255, 255, 255)") {
+            retry();
+          }
+        }, 800);
+      });
+    })();
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
