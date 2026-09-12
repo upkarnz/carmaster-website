@@ -29,6 +29,14 @@
 - [/services/suspension-kits.html](https://www.tuitorquemotors.com/services/suspension-kits.html): Suspension lift and lowering kits
 - [/services/exhaust-solutions.html](https://www.tuitorquemotors.com/services/exhaust-solutions.html): Custom exhaust fabrication and fitting
 
+## Location pages
+- [/mechanic-wiri.html](https://www.tuitorquemotors.com/mechanic-wiri.html): Mechanic in Wiri, Auckland — pricing, services and FAQs for local drivers
+- [/mechanic-manukau.html](https://www.tuitorquemotors.com/mechanic-manukau.html): Mechanic serving Manukau, Auckland — pricing, services and FAQs for South Auckland drivers
+
 ## Blog
 - [/blog/](https://www.tuitorquemotors.com/blog/): Car care advice, servicing costs and WOF tips
 - [/blog/european-car-servicing-auckland.html](https://www.tuitorquemotors.com/blog/european-car-servicing-auckland.html): European car servicing costs and common fault patterns for BMW, Mercedes-Benz, Audi and Volkswagen
+- [/blog/dodge-challenger-service-auckland.html](https://www.tuitorquemotors.com/blog/dodge-challenger-service-auckland.html): Dodge Challenger and American muscle car servicing, tuning, exhaust, suspension and NZ compliance considerations
+
+## Video
+- YouTube: [Tui Torque Motors Ltd](https://www.youtube.com/@TuiTorquemotors) — workshop content, WOF and diagnostic explainers, European and American muscle car servicing
